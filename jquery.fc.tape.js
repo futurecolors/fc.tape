@@ -1,10 +1,10 @@
 /**
- * Виджет анимированного спрайта
+ * Sprite animation widget
  * @version 0.1
  */
 $.widget('fc.tape', {
     /**
-     * Настройки
+     * Settings
      */
     options: {
         gradually: null,
@@ -16,17 +16,17 @@ $.widget('fc.tape', {
     },
 
     /**
-     * Элемент, который воплощает следующий кадр, который фейдится для ровности анимации
+     * Dom element, holding next frame, needed for animation smoothness
      */
     nextFrame: $('<div style="position: absolute; top: 0; left: 0; display: none; width: 100%; height: 100%"/>'),
 
     /**
-     * Текущая позиция (номер кадра)
+     * Current frame number
      */
     position: 0,
 
     /**
-     * Инициализация виджета
+     * Widget initialization
      */
     _init: function(options){
         this._initOptionFromData('frameCount', 'frame-count', 0, parseInt);
@@ -61,18 +61,18 @@ $.widget('fc.tape', {
     },
 
     /**
-     * Изменение настроек «на лету»
+     * Set options on the fly
      */
     setOptions: function(options) {
         $.extend(this.options, options);
     },
 
     /**
-     * Инициализация опции из data-атрибута
+     * Initialize widget from html data-* attributes
      */
-    _initOptionFromData: function(optionName, dataOptioName, defaultValue, filterFunction) {
+    _initOptionFromData: function(optionName, dataOptionName, defaultValue, filterFunction) {
         if (this.options[optionName] === null) {
-            var value = this.element.data(dataOptioName);
+            var value = this.element.data(dataOptionName);
             if (typeof value == 'boolean') {
                 this.options[optionName] = value;
             } else {
@@ -87,7 +87,7 @@ $.widget('fc.tape', {
     },
 
     /**
-     * Прокрутка к следующему кадру
+     * Show next animation frame
      */
     windToNext: function(){
         this.position++;
@@ -98,7 +98,7 @@ $.widget('fc.tape', {
     },
 
     /**
-     * Прокрутка к предыдущему кадру
+     * Show previous animation frame
      */
     windToPrev: function(){
         this.position--;
@@ -109,12 +109,12 @@ $.widget('fc.tape', {
     },
 
     /**
-     * Прокрутка к заданной позиции
+     * Skip animation frames and show specific frame instantly
      *
-     * @param integer/float position Позиция
-     * @param boolean inRelative Указание кадра относительно всей ленты
-     *                           (isRelative == true) и целочисленный position
-     *                           для указания конкретного кадра
+     * @param integer/float position Frame number
+     * @param boolean inRelative If isRelative is true, position is part of frames length (<1)
+     *
+     *
      */
     windTo: function(position, isRelative) {
         this.position = this._calculatePosition(position, isRelative);
@@ -122,12 +122,12 @@ $.widget('fc.tape', {
     },
 
     /**
-     * Прокрутка к заданной позиции путём поступательного перемещения по кадрам
+     * Animate sprite to specific frame
      *
-     * @param integer/float position Позиция
-     * @param boolean inRelative Указание кадра относительно всей ленты
-     *                           (isRelative == true) и целочисленный position
-     *                           для указания конкретного кадра
+     * @param integer/float position Frame number
+     * @param boolean inRelative If isRelative is true, position is part of frames length (<1)
+     * @param function callback
+     *
      */
     stepInTo: function(position, isRelative, callback) {
         var targetPosition = this._calculatePosition(position, isRelative);
@@ -145,7 +145,7 @@ $.widget('fc.tape', {
             for (; (targetPosition - this.position) * positionStep >= 0; this.position += positionStep) {
 
                 if (targetPosition == this.position && typeof callback == 'function') {
-                    // Для последнего кадра задаём callback
+                    // callback is triggered after last frame is reached
                     this._changeFrame(callback);
                 } else {
                     this._changeFrame();
@@ -168,7 +168,7 @@ $.widget('fc.tape', {
     },
 
     /**
-     * Установка позиции без анимаций
+     * Set frame with no animation
      */
     setPosition: function(position){
         if (position < 0) {
@@ -185,12 +185,10 @@ $.widget('fc.tape', {
     },
 
     /**
-     * Вычислние позиции
+     * Get int framenumber
      *
-     * @param integer/float position Позиция
-     * @param boolean inRelative Указание кадра относительно всей ленты
-     *                           (isRelative == true) и целочисленный position
-     *                           для указания конкретного кадра
+     * @param integer/float position Frame number
+     * @param boolean inRelative If isRelative is true, position is part of frames length (<1)
      * @return integer
      */
     _calculatePosition: function(position, isRelative) {
@@ -202,7 +200,9 @@ $.widget('fc.tape', {
     },
 
     /**
-     * Смена кадра
+     * Change frame
+     *
+     * @param callback
      */
     _changeFrame: function(callback) {
         var nextFrameBackgroundPosition = this.options.backgroundX + 'px -' + (this.position * this.options.frameHeight) + 'px';
