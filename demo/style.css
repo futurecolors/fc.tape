@@ -19,6 +19,9 @@ body {
 .g-clear {
     clear: both;
 }
+b {
+    font-weight: bolder;
+}
 
 
 /**

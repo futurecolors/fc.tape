@@ -6,8 +6,13 @@
 
     <title>jQuery.fc.tape demo page</title>
 
-    <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+
+    <script type="text/javascript" src="http://yandex.st/jquery/1.6.4/jquery.min.js"></script>
+    <script type="text/javascript" src="http://yandex.st/jquery-ui/1.8.16/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="../jquery.fc.tape.js"></script>
+    <script type="text/javascript" src="script.js"></script>
 </head>
 <body>
     <header class="b-header">
@@ -15,7 +20,7 @@
     </header>
 
     <section class="b-sample">
-        <h1 class="b-sample__header">Feature "gradually"</h1>
+        <h1 class="b-sample__header">Main settings</h1>
 
         <div class="l-sample__description">
             <p class="b-sample__text">CSS code:</p>
@@ -24,22 +29,48 @@
     height: 315px;
     background: url(tape.png) 0px 0px no-repeat;
 }</code></pre>
+            <p class="b-sample__text">JS code (tape activation):</p>
+            <pre class="b-code b-sample_code_js"><code>$('.js-sample__tape').tape();</code></pre>
+        </div>
+        <div class="g-clear"></div>
+    </section>
+
+    <section class="b-sample">
+        <h1 class="b-sample__header">Feature "gradually"</h1>
+
+        <div class="l-sample__description">
             <p class="b-sample__text">HTML code:</p>
-            <pre class="b-code b-sample_code_html">
-                <code></code>
-            </pre>
-            <p class="b-sample__text">JS code:</p>
-            <pre class="b-code b-sample_code_js">
-                <code></code>
-            </pre>
+            <pre class="b-code b-sample_code_html"><code>&lt;div class="b-tape js-sample__tape"
+     data-frame-count="10"
+     data-change-duration="150"
+     data-gradually="<b>false</b>"&gt;&lt;/div&gt;</code></pre>
+            <p class="b-sample__text">and</p>
+            <pre class="b-code b-sample_code_html"><code>&lt;div class="b-tape js-sample__tape"
+     data-frame-count="10"
+     data-change-duration="150"
+     data-gradually="<b>true</b>"&gt;&lt;/div&gt;</code></pre>
+            <p class="b-sample__text">JS code (tape usage):</p>
+            <pre class="b-code b-sample_code_js"><code>$('.js-sample_1 .js-sample__button,
+   .js-sample_2 .js-sample__button').click(function(){
+    $(this)
+        .closest('.js-sample')
+        .find('.js-sample__tape')
+        .tape('windToNext');
+});</code></pre>
         </div>
         <div class="l-sample__tape">
-            <div class="l-tape js-sample">
-                <div class="b-tape js-sample__tape"></div>
+            <div class="l-tape js-sample js-sample_1">
+                <div class="b-tape js-sample__tape"
+                     data-frame-count="10"
+                     data-change-duration="150"
+                     data-gradually="false"></div>
                 <button class="b-tape__run-button js-sample__button">Run!</button>
             </div>
-            <div class="l-tape js-sample">
-                <div class="b-tape js-sample__tape"></div>
+            <div class="l-tape js-sample js-sample_2">
+                <div class="b-tape js-sample__tape"
+                     data-frame-count="10"
+                     data-change-duration="150"
+                     data-gradually="true"></div>
                 <button class="b-tape__run-button js-sample__button">Run!</button>
             </div>
         </div>
