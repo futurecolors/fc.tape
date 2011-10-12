@@ -1,0 +1,99 @@
+/**
+ * jQuery.fc.tape demo page
+ *
+ * @package     jQuery.fc.tape
+ * @version     1.0
+ * @author      piumosso <inbox@piumosso.ru>
+ * @copyright   Future Colors
+ */
+
+
+/**
+ * @section     jQuery.fc.tape demo page
+ */
+
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    color: #333;
+}
+.g-clear {
+    clear: both;
+}
+
+
+/**
+ * @subsection  Header
+ */
+
+.b-header {
+    margin: 30px;
+    color: #0868ac;
+}
+.b-header__title {
+    font-size: 24px;
+}
+
+
+/**
+ * @subsection  Sample block
+ */
+
+.b-sample {
+    margin: 30px;
+}
+.l-sample__description {
+    width: 40%;
+    float: left;
+}
+.l-sample__tape {
+    width: 50%;
+    float: right;
+}
+.b-sample__header {
+    line-height: 30px;
+    font-size: 18px;
+    border-bottom: 1px dashed #eee;
+}
+.b-sample__text {
+    margin: 15px 0px 10px;
+    font-size: 14px;
+}
+
+
+/**
+ * @subsection  Code sample
+ */
+
+.b-code {
+    margin: 5px -10px 15px;
+    padding:  10px;
+    font-size: 14px;
+    font-family: monospace;
+}
+.b-sample_code_css {
+    background: #ffffea;
+}
+.b-sample_code_html {
+    background: #eaf0ff;
+}
+.b-sample_code_js {
+    background: #eafff0;
+}
+
+
+/**
+ * @subsection  Tape
+ */
+
+.b-tape {
+    width: 420px;
+    height: 315px;
+    background: url(http://carbon-card.ru/_static/images/backgrounds/promo-tape.png) 0px 0px no-repeat;
+}
+.l-tape {
+    text-align: center;
+}
+.b-tape__run-button  {
+    margin: 10px 0px;
+    font-size: 14px;
+}
