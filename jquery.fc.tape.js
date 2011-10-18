@@ -145,6 +145,9 @@ $.widget('fc.tape', {
             if (targetPosition < this.position) {
                 positionStep = -1;
             } else {
+                if (typeof callback == 'function') {
+                    callback();
+                }
                 return;
             }
         }
