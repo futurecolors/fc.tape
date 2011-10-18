@@ -68,6 +68,13 @@ $.widget('fc.tape', {
     },
 
     /**
+     * Get option value
+     */
+    getOption: function(optionName) {
+        return this.options[optionName];
+    },
+
+    /**
      * Initialize widget from html data-* attributes
      */
     _initOptionFromData: function(optionName, dataOptionName, defaultValue, filterFunction) {
