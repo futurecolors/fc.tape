@@ -32,7 +32,9 @@ $('#element').tape(options);
 
 `frameChangeDuration` — время смены кадра;
 
-`backgroundX` — смещение фона по оси X.
+`backgroundX` — смещение фона по оси X;
+
+`preload` — предзагрузка спрайта. После загрузке возбуждается событие `tape-loaded` на элементе.
 
 
 ### Опции через data-атрибуты
@@ -48,6 +50,8 @@ $('#element').tape(options);
 `data-frameHeight`
 
 `data-frameChangeDuration`
+
+`data-preload`
 
 
 ## Методы

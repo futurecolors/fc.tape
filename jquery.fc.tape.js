@@ -12,7 +12,8 @@ $.widget('fc.tape', {
         frameCount: null,
         frameHeight: null,
         frameChangeDuration: null,
-        backgroundX: 0
+        backgroundX: 0,
+        preload: true
     },
 
     /**
@@ -26,6 +27,11 @@ $.widget('fc.tape', {
     position: 0,
 
     /**
+     * Current frame number
+     */
+    isLoaded: false,
+
+    /**
      * Widget initialization
      */
     _init: function(options){
@@ -34,7 +40,7 @@ $.widget('fc.tape', {
         this._initOptionFromData('gradually', 'gradually', true);
         this._initOptionFromData('frameHeight', 'frame-height', 0, parseInt);
         this._initOptionFromData('image', 'image', false);
-
+        this._initOptionFromData('preload', 'preload', true);
 
         if (!this.options.image) {
             this.options.image = this.element.css('backgroundImage');
@@ -57,6 +63,24 @@ $.widget('fc.tape', {
 
         if (!this.options.frameHeight) {
             this.options.frameHeight = this.element.height();
+        }
+
+        if (!this.options.preload) {
+            this.isLoaded = true;
+        } else {
+            // Preload image
+            var that = this;
+            var imageSrcMatch = /url\((.+?)\)/g.exec(this.options.image);
+            var imageSrc = imageSrcMatch ? imageSrcMatch[1] : this.options.image;
+
+            var $preloader = $('<img src=' + imageSrc + ' />').load(function(){
+                that.isLoaded = true;
+                that.element.trigger('tape-loaded');
+            });
+
+            $preloader
+                .wrapAll('<div style="display: none" />')
+                .appendTo('body');
         }
     },
 
@@ -181,6 +205,10 @@ $.widget('fc.tape', {
      * Set frame with no animation
      */
     setPosition: function(position){
+        if (!this.isLoaded) {
+            return;
+        }
+
         if (position < 0) {
             this.position = 0;
         } else {
@@ -215,6 +243,10 @@ $.widget('fc.tape', {
      * @param callback
      */
     _changeFrame: function(callback) {
+        if (!this.isLoaded) {
+            return;
+        }
+
         var nextFrameBackgroundPosition = this.options.backgroundX + 'px -' + (this.position * this.options.frameHeight) + 'px';
         if (this.options.gradually) {
             var $element = this.element;
