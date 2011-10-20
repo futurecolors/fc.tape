@@ -84,7 +84,7 @@ $.widget('fc.tape', {
             var $preloader = $('<img src=' + imageSrc + ' />').load(function(){
                 that.isLoaded = true;
                 that.element
-                    .css('background', that.options.image + that.options.backgroundX + 'px 0px no-repeat')
+                    .css('background', that.options.image + ' ' + that.options.backgroundX + 'px 0px no-repeat')
                     .trigger('tape-loaded');
             });
 
