@@ -42,10 +42,13 @@ $.widget('fc.tape', {
         this._initOptionFromData('image', 'image', false);
         this._initOptionFromData('preload', 'preload', true);
 
+        this._preload();
         if (!this.options.image) {
             this.options.image = this.element.css('backgroundImage');
+        } else {
+            this.options.image = 'url("' + this.options.image + '")';
         }
-        if (this.element.css('backgroundImage') == 'none') {
+        if (this.element.css('backgroundImage') == 'none' && this.isLoaded) {
             this.element.css('background', 'url(' + this.options.image + ') ' +
                              this.options.backgroundX + 'px 0px no-repeat');
         }
@@ -64,7 +67,12 @@ $.widget('fc.tape', {
         if (!this.options.frameHeight) {
             this.options.frameHeight = this.element.height();
         }
+    },
 
+    /**
+     * Preload image
+     */
+    _preload: function(){
         if (!this.options.preload) {
             this.isLoaded = true;
         } else {
@@ -75,11 +83,14 @@ $.widget('fc.tape', {
 
             var $preloader = $('<img src=' + imageSrc + ' />').load(function(){
                 that.isLoaded = true;
-                that.element.trigger('tape-loaded');
+                that.element
+                    .css('background', that.options.image + that.options.backgroundX + 'px 0px no-repeat')
+                    .trigger('tape-loaded');
             });
 
             $preloader
-                .wrapAll('<div style="display: none" />')
+                .appendTo('<div style="display: none"></div>')
+                .parent()
                 .appendTo('body');
         }
     },
