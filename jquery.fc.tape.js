@@ -202,7 +202,7 @@ $.widget('fc.tape', {
             timeout = window.setInterval(function(){
                 that.position += positionStep;
                 that._changeFrame();
-                if (that.position == targetPosition) {
+                if (that.position >= targetPosition) {
                     clearTimeout(timeout);
                     if (typeof callback == 'function') {
                         callback();
