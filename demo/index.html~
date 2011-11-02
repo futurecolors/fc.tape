@@ -114,5 +114,57 @@ $('.js-sample_4 .js-sample__button').click(function(){
         </div>
         <div class="g-clear"></div>
     </section>
+
+    <section class="b-sample">
+        <h1 class="b-sample__header">Method</h1>
+        <div class="l-sample__description">
+            <p class="b-sample__text">HTML code:</p>
+            <pre class="b-code b-sample_code_html"><code>&lt;div class="b-tape js-sample__tape"
+     data-frame-count="10"
+     data-change-duration="150"&gt;&lt;/div&gt;</code></pre>
+            <p class="b-sample__text">JS code:</p>
+            <pre class="b-code b-sample_code_js"><code>$('.js-sample_3 .js-sample__button').click(function(){
+    $(this)
+        .closest('.js-sample')
+        .find('.js-sample__tape')
+        .tape('');
+});</code></pre>
+        </div>
+        <div class="l-sample__tape">
+            <div class="l-tape js-sample js-sample_3">
+                <div class="b-tape js-sample__tape"
+                     data-frame-count="10"
+                     data-change-duration="150"></div>
+                <button class="b-tape__run-button js-sample__button">Run!</button>
+            </div>
+        </div>
+        <div class="g-clear"></div>
+    </section>
+
+    <section class="b-sample">
+        <h1 class="b-sample__header">Method</h1>
+        <div class="l-sample__description">
+            <p class="b-sample__text">HTML code:</p>
+            <pre class="b-code b-sample_code_html"><code>&lt;div class="b-tape js-sample__tape"
+     data-frame-count="10"
+     data-change-duration="150"&gt;&lt;/div&gt;</code></pre>
+            <p class="b-sample__text">JS code:</p>
+            <pre class="b-code b-sample_code_js"><code>$('.js-sample_3 .js-sample__button').click(function(){
+    $(this)
+        .closest('.js-sample')
+        .find('.js-sample__tape')
+        .tape('');
+});</code></pre>
+        </div>
+        <div class="l-sample__tape">
+            <div class="l-tape js-sample js-sample_3">
+                <div class="b-tape js-sample__tape"
+                     data-frame-count="10"
+                     data-change-duration="150"></div>
+                <button class="b-tape__run-button js-sample__button">Run!</button>
+            </div>
+        </div>
+        <div class="g-clear"></div>
+    </section>
 </body>
 </html>
