@@ -35,7 +35,7 @@
         <div class="g-clear"></div>
     </section>
 
-    <section class="b-sample">
+    <section class="b-sample" id="gradually">
         <h1 class="b-sample__header">Feature "gradually"</h1>
 
         <div class="l-sample__description">
@@ -77,7 +77,7 @@
         <div class="g-clear"></div>
     </section>
 
-    <section class="b-sample">
+    <section class="b-sample" id="wind-to-next-prev">
         <h1 class="b-sample__header">Methods windToNext and windToPrev</h1>
         <div class="l-sample__description">
             <p class="b-sample__text">HTML code for this and follow samples:</p>
@@ -106,6 +106,48 @@ $('.js-sample_4 .js-sample__button').click(function(){
                 <button class="b-tape__run-button js-sample__button">Run!</button>
             </div>
             <div class="l-tape js-sample js-sample_4">
+                <div class="b-tape js-sample__tape"
+                     data-frame-count="10"
+                     data-change-duration="150"></div>
+                <button class="b-tape__run-button js-sample__button">Run!</button>
+            </div>
+        </div>
+        <div class="g-clear"></div>
+    </section>
+
+    <section class="b-sample" id="wind-to-step-in-to">
+        <h1 class="b-sample__header">Methods windTo and stepInTo</h1>
+        <div class="l-sample__description">
+            <p class="b-sample__text">
+                Difference between windTo and stepInTo methods is that the first
+                method change frame without progressive transition.
+            </p>
+            <p class="b-sample__text">JS code:</p>
+            <pre class="b-code b-sample_code_js"><code>$('.js-sample_5 .js-sample__button').click(function(){
+    $(this)
+        .closest('.js-sample')
+        .find('.js-sample__tape')
+        <b>.tape('windTo', 9);</b>
+});
+$('.js-sample_6 .js-sample__button').click(function(){
+    $(this)
+        .closest('.js-sample')
+        .find('.js-sample__tape')
+        <b>.tape('stepInTo', 9);</b>
+});</code></pre>
+            <p class="b-sample__text">
+                The second method can be used for smooth transitions between
+                the states. Speed regulated by the changeDuration option.
+            </p>
+        </div>
+        <div class="l-sample__tape">
+            <div class="l-tape js-sample js-sample_5">
+                <div class="b-tape js-sample__tape"
+                     data-frame-count="10"
+                     data-change-duration="150"></div>
+                <button class="b-tape__run-button js-sample__button">Run!</button>
+            </div>
+            <div class="l-tape js-sample js-sample_6">
                 <div class="b-tape js-sample__tape"
                      data-frame-count="10"
                      data-change-duration="150"></div>
