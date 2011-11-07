@@ -94,6 +94,7 @@ b {
     background: url(tape.png) 0px 0px no-repeat;
 }
 .l-tape {
+    float: left;
     text-align: center;
 }
 .b-tape__run-button  {
