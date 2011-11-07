@@ -13,6 +13,7 @@
  */
 
 body {
+    line-height: 1.6;
     font-family: Helvetica, Arial, sans-serif;
     color: #333;
 }
@@ -53,7 +54,6 @@ b {
     float: right;
 }
 .b-sample__header {
-    line-height: 30px;
     font-size: 18px;
     border-bottom: 1px dashed #eee;
 }
@@ -70,6 +70,7 @@ b {
 .b-code {
     margin: 5px -10px 15px;
     padding:  10px;
+    line-height: 20px;
     font-size: 14px;
     font-family: monospace;
 }
