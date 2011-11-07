@@ -234,6 +234,60 @@ $.widget('fc.tape', {
     },
 
     /**
+     * Apply rotation behavior
+     *
+     * @param object/string options Options for rotation
+     */
+    rotate: function(options){
+        options = $.extend({
+            element: this.element,
+            deltaX: 1,
+            destroy: false,
+            direction: 1
+        }, options);
+        
+        if (options.destroy) {
+            options.element.unbind('.rotate');
+            return;
+        }
+
+        var clientX = 0;
+        var isActive = false;
+        var that = this;
+        var initialGradually = this.options.gradually;
+
+        options.element
+            .bind('mousedown.rotate', function(){
+                isActive = true;
+                that.options.gradually = false;
+            })
+            .bind('mouseup.rotate mouseleave.rotate', function(){
+                isActive = false;
+                that.options.gradually = initialGradually;
+            })
+            .bind('mousemove.rotate', function(e){
+                if (isActive && that.isLoaded) {
+                    if (e.clientX > clientX + options.deltaX) {
+                        if (options.direction > 0) {
+                            that.windToNext();
+                        } else {
+                            that.windToPrev();
+                        }
+                        clientX = e.clientX;
+                    }
+                    if (e.clientX < clientX - options.deltaX) {
+                        if (options.direction > 0) {
+                            that.windToPrev();
+                        } else {
+                            that.windToNext();
+                        }
+                        clientX = e.clientX;
+                    }
+                }
+            });
+    },
+
+    /**
      * Get int framenumber
      *
      * @param integer/float position Frame number
