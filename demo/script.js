@@ -7,16 +7,12 @@ $(function(){
             .find('.js-sample__tape')
             .tape('stepInTo', 39);
     });
-    $('.js-sample_3 .js-sample__button').click(function(){
+    $('.js-sample_3 .js-sample__tape').bind('mouseenter mouseleave', function(){
         $(this)
-            .closest('.js-sample')
-            .find('.js-sample__tape')
             .tape('windToNext');
     });
-    $('.js-sample_4 .js-sample__button').click(function(){
+    $('.js-sample_4 .js-sample__tape').bind('mouseenter mouseleave', function(){
         $(this)
-            .closest('.js-sample')
-            .find('.js-sample__tape')
             .tape('windToPrev');
     });
     $('.js-sample_5 .js-sample__button').click(function(){

@@ -97,7 +97,8 @@ b {
     float: left;
     text-align: center;
 }
-.b-tape__run-button  {
+.b-tape__run-button,
+.b-tape__label {
     margin: 10px 0px;
     font-size: 14px;
 }

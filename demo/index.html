@@ -85,31 +85,29 @@
      data-frame-count="40"
      data-change-duration="150"&gt;&lt;/div&gt;</code></pre>
             <p class="b-sample__text">JS code:</p>
-            <pre class="b-code b-sample_code_js"><code>$('.js-sample_3 .js-sample__button').click(function(){
-    $(this)
-        .closest('.js-sample')
-        .find('.js-sample__tape')
-        <b>.tape('windToNext');</b>
-});
-$('.js-sample_4 .js-sample__button').click(function(){
-    $(this)
-        .closest('.js-sample')
-        .find('.js-sample__tape')
-        <b>.tape('windToPrev');</b>
-});</code></pre>
+            <pre class="b-code b-sample_code_js"><code>$('.js-sample_3 .js-sample__tape')
+    .bind('mouseenter mouseleave', function(){
+        $(this)
+            <b>.tape('windToNext');</b>
+    });
+$('.js-sample_4 .js-sample__tape')
+    .bind('mouseenter mouseleave', function(){
+        $(this)
+            <b>.tape('windToPrev');</b>
+    });</code></pre>
         </div>
         <div class="l-sample__tape">
             <div class="l-tape js-sample js-sample_3">
                 <div class="b-tape js-sample__tape"
                      data-frame-count="40"
                      data-change-duration="150"></div>
-                <button class="b-tape__run-button js-sample__button">Run!</button>
+                <div class="b-tape__label">Mouse it!</div>
             </div>
             <div class="l-tape js-sample js-sample_4">
                 <div class="b-tape js-sample__tape"
                      data-frame-count="40"
                      data-change-duration="150"></div>
-                <button class="b-tape__run-button js-sample__button">Run!</button>
+                <div class="b-tape__label">Mouse it!</div>
             </div>
         </div>
         <div class="g-clear"></div>
