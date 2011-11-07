@@ -5,7 +5,7 @@ $(function(){
         $(this)
             .closest('.js-sample')
             .find('.js-sample__tape')
-            .tape('stepInTo', 9);
+            .tape('stepInTo', 39);
     });
     $('.js-sample_3 .js-sample__button').click(function(){
         $(this)
@@ -23,12 +23,12 @@ $(function(){
         $(this)
             .closest('.js-sample')
             .find('.js-sample__tape')
-            .tape('windTo', 9);
+            .tape('windTo', 39);
     });
     $('.js-sample_6 .js-sample__button').click(function(){
         $(this)
             .closest('.js-sample')
             .find('.js-sample__tape')
-            .tape('stepInTo', 9);
+            .tape('stepInTo', 39);
     });
 });

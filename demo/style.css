@@ -89,9 +89,9 @@ b {
  */
 
 .b-tape {
-    width: 420px;
-    height: 315px;
-    background: url(http://carbon-card.ru/_static/images/backgrounds/promo-tape.png) 0px 0px no-repeat;
+    width: 289px;
+    height: 193px;
+    background: url(tape.png) 0px 0px no-repeat;
 }
 .l-tape {
     text-align: center;
