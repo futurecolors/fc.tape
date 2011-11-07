@@ -125,13 +125,13 @@ $('.js-sample_4 .js-sample__tape')
     $(this)
         .closest('.js-sample')
         .find('.js-sample__tape')
-        <b>.tape('windTo', 39);</b>
+        <b>.tape('windTo', 20);</b>
 });
 $('.js-sample_6 .js-sample__button').click(function(){
     $(this)
         .closest('.js-sample')
         .find('.js-sample__tape')
-        <b>.tape('stepInTo', 39);</b>
+        <b>.tape('stepInTo', 20);</b>
 });</code></pre>
             <p class="b-sample__text">
                 The second method can be used for smooth transitions between
@@ -150,6 +150,38 @@ $('.js-sample_6 .js-sample__button').click(function(){
                      data-frame-count="40"
                      data-change-duration="150"></div>
                 <button class="b-tape__run-button js-sample__button">Run!</button>
+            </div>
+        </div>
+        <div class="g-clear"></div>
+    </section>
+
+    <section class="b-sample" id="wind-to-step-in-to">
+        <h1 class="b-sample__header">Rotate behavior</h1>
+        <div class="l-sample__description">
+            <p class="b-sample__text">JS code:</p>
+            <pre class="b-code b-sample_code_js"><code>$('.js-sample_7 .js-sample__tape')
+    <b>.tape('rotate');</b>
+$('.js-sample_7 .js-sample__tape')
+    .tape('rotate', <b>{
+        element: $('.js-sample_7 .js-sample__rotation-handler'),
+        direction: -1,
+        deltaX: 5
+    }</b>);</code></pre>
+            <p class="b-sample__text">
+                In this sample rotation rotation behavior apply to the tape and
+                to green helper (with options). deltaX option reduces the speed.
+            </p>
+        </div>
+        <div class="l-sample__tape">
+            <div class="l-tape js-sample js-sample_7">
+                <div class="b-tape js-sample__tape"
+                     data-frame-count="40"
+                     data-change-duration="150"></div>
+                <div class="b-tape__label">Rotate it! Drag the image</div>
+                <div class="b-sample__rotation-handler js-sample__rotation-handler"
+                     unselectable="on">
+                    ... or the bar
+                </div>
             </div>
         </div>
         <div class="g-clear"></div>

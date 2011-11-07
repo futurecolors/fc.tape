@@ -19,12 +19,20 @@ $(function(){
         $(this)
             .closest('.js-sample')
             .find('.js-sample__tape')
-            .tape('windTo', 39);
+            .tape('windTo', 20);
     });
     $('.js-sample_6 .js-sample__button').click(function(){
         $(this)
             .closest('.js-sample')
             .find('.js-sample__tape')
-            .tape('stepInTo', 39);
+            .tape('stepInTo', 20);
     });
+    $('.js-sample_7 .js-sample__tape')
+        .tape('rotate');
+    $('.js-sample_7 .js-sample__tape')
+        .tape('rotate', {
+            element: $('.js-sample_7 .js-sample__rotation-handler'),
+            direction: -1,
+            deltaX: 5
+        });
 });

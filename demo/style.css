@@ -102,3 +102,16 @@ b {
     margin: 10px 0px;
     font-size: 14px;
 }
+.b-sample__rotation-handler {
+    height: 30px;
+    margin: 10px 0px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 12px;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+            user-select: none;
+    background: #9b9;
+    cursor: pointer;
+}
+
