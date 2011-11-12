@@ -119,6 +119,7 @@ $.widget('fc.tape', {
     _initOptionFromData: function(optionName, defaultValue, filterFunction) {
         if (this.options[optionName] === null) {
             var value = this.element.data(optionName);
+
             if (typeof value == 'boolean') {
                 this.options[optionName] = value;
             } else {
