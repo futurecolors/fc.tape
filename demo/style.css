@@ -92,7 +92,14 @@ b {
 .b-tape {
     width: 289px;
     height: 193px;
+    margin-top: 10px;
     background: url(tape.png) 0px 0px no-repeat;
+}
+.b-tape_bonpari {
+    width: 350px;
+    height: 211px;
+    margin-top: 10px;
+    background: url(bonpari.jpg) 0px 0px no-repeat;
 }
 .l-tape {
     float: left;

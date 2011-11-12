@@ -19,7 +19,12 @@ $.widget('fc.tape', {
     /**
      * Dom element, holding next frame, needed for animation smoothness
      */
-    nextFrame: $('<div style="position: absolute; top: 0; left: 0; display: none; width: 100%; height: 100%"/>'),
+    nextFrame: null,
+
+    /**
+     * Html for next frame, needed for animation smoothness
+     */
+    nextFrameHtml: '<div style="position: absolute; top: 0; left: 0; display: none; width: 100%; height: 100%"/>',
 
     /**
      * Current frame number
@@ -35,12 +40,12 @@ $.widget('fc.tape', {
      * Widget initialization
      */
     _init: function(options){
-        this._initOptionFromData('frameCount', 'frame-count', 0, parseInt);
-        this._initOptionFromData('frameChangeDuration', 'frame-change-duration', 50, parseInt);
-        this._initOptionFromData('gradually', 'gradually', true);
-        this._initOptionFromData('frameHeight', 'frame-height', 0, parseInt);
-        this._initOptionFromData('image', 'image', false);
-        this._initOptionFromData('preload', 'preload', true);
+        this._initOptionFromData('frameCount', 0, parseInt);
+        this._initOptionFromData('frameChangeDuration', 50, parseInt);
+        this._initOptionFromData('gradually', true);
+        this._initOptionFromData('frameHeight', 0, parseInt);
+        this._initOptionFromData('image', false);
+        this._initOptionFromData('preload', true);
 
         this._preload();
         if (!this.options.image) {
@@ -57,10 +62,9 @@ $.widget('fc.tape', {
             this.element.css('position', 'relative');
         }
 
-        var background = 'url(' + this.options.image + ') no-repeat';
         if (this.options.gradually) {
-            this.nextFrame
-                .css('background', background)
+            this.nextFrame = $(this.nextFrameHtml)
+                .css('backgroundImage', this.options.image)
                 .appendTo(this.element);
         }
 
@@ -112,9 +116,9 @@ $.widget('fc.tape', {
     /**
      * Initialize widget from html data-* attributes
      */
-    _initOptionFromData: function(optionName, dataOptionName, defaultValue, filterFunction) {
+    _initOptionFromData: function(optionName, defaultValue, filterFunction) {
         if (this.options[optionName] === null) {
-            var value = this.element.data(dataOptionName);
+            var value = this.element.data(optionName);
             if (typeof value == 'boolean') {
                 this.options[optionName] = value;
             } else {

@@ -5,7 +5,8 @@ $(function(){
         $(this)
             .closest('.js-sample')
             .find('.js-sample__tape')
-            .tape('stepInTo', 39);
+            .tape('setPosition', 0) // For loop play
+            .tape('stepInTo', 4);
     });
     $('.js-sample_3 .js-sample__tape').bind('mouseenter mouseleave', function(){
         $(this)

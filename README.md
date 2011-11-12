@@ -108,14 +108,14 @@ $('#element').tape(options);
 
 Опции можно задать через соответствующие data-атрибуты:
 
-**Option**          | **Data attribute**       |
---------------------|--------------------------|
-gradually           | data-gradually           |
-image               | data-image               |
-frameCount          | data-frameCount          |
-frameHeight         | data-frameHeight         |
-frameChangeDuration | data-frameChangeDuration |
-preload             | data-preload             |
+**Option**          | **Data attribute**         |
+--------------------|----------------------------|
+gradually           | data-gradually             |
+image               | data-image                 |
+frameCount          | data-frame-count           |
+frameHeight         | data-frame-height          |
+frameChangeDuration | data-frame-change-duration |
+preload             | data-preload               |
 
 ## Методы
 

@@ -42,12 +42,12 @@
             <p class="b-sample__text">HTML code:</p>
             <pre class="b-code b-sample_code_html"><code>&lt;div class="b-tape js-sample__tape"
      data-frame-count="40"
-     data-change-duration="150"
+     data-frame-change-duration="200"
      data-gradually="<b>false</b>"&gt;&lt;/div&gt;</code></pre>
             <p class="b-sample__text">and</p>
             <pre class="b-code b-sample_code_html"><code>&lt;div class="b-tape js-sample__tape"
      data-frame-count="40"
-     data-change-duration="150"
+     data-frame-change-duration="200"
      data-gradually="<b>true</b>"&gt;&lt;/div&gt;</code></pre>
             <p class="b-sample__text">JS code (tape usage):</p>
             <pre class="b-code b-sample_code_js"><code>$('.js-sample_1 .js-sample__button,
@@ -55,21 +55,21 @@
     $(this)
         .closest('.js-sample')
         .find('.js-sample__tape')
-        <b>.tape('stepInTo', 39);</b>
+        <b>.tape('stepInTo', 4);</b>
 });</code></pre>
         </div>
         <div class="l-sample__tape">
             <div class="l-tape js-sample js-sample_1">
-                <div class="b-tape js-sample__tape"
-                     data-frame-count="40"
-                     data-change-duration="150"
+                <div class="b-tape_bonpari js-sample__tape"
+                     data-frame-count="5"
+                     data-frame-change-duration="200"
                      data-gradually="false"></div>
                 <button class="b-tape__run-button js-sample__button">Run in discrete mode!</button>
             </div>
             <div class="l-tape js-sample js-sample_2">
-                <div class="b-tape js-sample__tape"
-                     data-frame-count="40"
-                     data-change-duration="150"
+                <div class="b-tape_bonpari js-sample__tape"
+                     data-frame-count="5"
+                     data-frame-change-duration="200"
                      data-gradually="true"></div>
                 <button class="b-tape__run-button js-sample__button">Run with gradually!</button>
             </div>
@@ -83,7 +83,7 @@
             <p class="b-sample__text">HTML code for this and follow samples:</p>
             <pre class="b-code b-sample_code_html"><code>&lt;div class="b-tape js-sample__tape"
      data-frame-count="40"
-     data-change-duration="150"&gt;&lt;/div&gt;</code></pre>
+     data-frame-change-duration="150"&gt;&lt;/div&gt;</code></pre>
             <p class="b-sample__text">JS code:</p>
             <pre class="b-code b-sample_code_js"><code>$('.js-sample_3 .js-sample__tape')
     .bind('mouseenter mouseleave', function(){
@@ -100,13 +100,13 @@ $('.js-sample_4 .js-sample__tape')
             <div class="l-tape js-sample js-sample_3">
                 <div class="b-tape js-sample__tape"
                      data-frame-count="40"
-                     data-change-duration="150"></div>
+                     data-frame-change-duration="150"></div>
                 <div class="b-tape__label">Mouse it! windToNext</div>
             </div>
             <div class="l-tape js-sample js-sample_4">
                 <div class="b-tape js-sample__tape"
                      data-frame-count="40"
-                     data-change-duration="150"></div>
+                     data-frame-change-duration="150"></div>
                 <div class="b-tape__label">Mouse it! windToPrev</div>
             </div>
         </div>
@@ -142,13 +142,13 @@ $('.js-sample_6 .js-sample__button').click(function(){
             <div class="l-tape js-sample js-sample_5">
                 <div class="b-tape js-sample__tape"
                      data-frame-count="40"
-                     data-change-duration="150"></div>
+                     data-frame-change-duration="150"></div>
                 <button class="b-tape__run-button js-sample__button">Run windTo transition!</button>
             </div>
             <div class="l-tape js-sample js-sample_6">
                 <div class="b-tape js-sample__tape"
                      data-frame-count="40"
-                     data-change-duration="150"></div>
+                     data-frame-change-duration="150"></div>
                 <button class="b-tape__run-button js-sample__button">Run stepInTo transition!</button>
             </div>
         </div>
@@ -176,7 +176,7 @@ $('.js-sample_7 .js-sample__tape')
             <div class="l-tape js-sample js-sample_7">
                 <div class="b-tape js-sample__tape"
                      data-frame-count="40"
-                     data-change-duration="150"></div>
+                     data-frame-change-duration="150"></div>
                 <div class="b-tape__label">Rotate it! Drag the image</div>
                 <div class="b-sample__rotation-handler js-sample__rotation-handler"
                      unselectable="on">
