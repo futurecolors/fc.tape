@@ -1,33 +1,33 @@
-# Виджет jQuery.fc.tape
+# jQuery.fc.tape widget
 
-Виджет, эмулирующий поведение киноплёнки для анимаций. Анимируется фоновое изображение,
-состоящее из кадров, склеенных в спрайт. Виджет позволяет задавать плавность, временные
-характеристики, а также управлять поведением различными способами.
+jQuery widget for sprite animations. Background image (sprite) consisting of picture frames
+like the movie tape is animated. Widget supports options to adjust smothness and speed of animations
+as well as methods to control animation behavior.
 
 
-## Подключение
+## Installation
 
-Для использования `jQuery.fc.tape` необходимы:
+`jQuery.fc.tape` has following dependencies:
 
-* [jQuery](http://jquery.com/) и
+* [jQuery](http://jquery.com/) and
 * [jQuery UI](http://jqueryui.com/) (Core и Widget)
 
 
-## Вызов
+## Usage
 
 ```js
 $('#element').tape(options);
 ```
 
 
-## Опции
+## Options
 
 
 ### gradually (boolean)
 
-Переключать кадры с плавным наложением следующего на текущий (применимо при
-малом количестве кадров, невысокой скорости переключения и для некоторых
-эффектов).
+Switch frames with smooth transition (next frame overlays previous with a small
+transparent fade). Useful for animations with a small number of frames,
+slow speed animations and for several effects.
 
 ```js
 $('#tape').tape({
@@ -35,12 +35,12 @@ $('#tape').tape({
 });
 ```
     
-По умолчанию true.
+Default: `true`.
 
 ### image (string)
 
-Путь к изображению (спрайту с кадрами). Кадры должны располагаться один
-под другим.
+Background image path (sprite with frames to animate). Frames should be aligned
+vertially, top to bottom.
 
 ```js
 $('#tape').tape({
@@ -48,12 +48,13 @@ $('#tape').tape({
 });
 ```
     
-По умолчанию используется фоновое изображение элемента.
+Default: DOM element's backgound-image is used.
 
 ### frameCount (integer)
 
-Количество кадров, участвующих в анимации. Не обязательно должно быть равно
-реальному количеству кадров в спрайте, но как минимум должно быть не больше.
+Number of frames in animation. It can be less than real number of frames,
+if you don't want to use the whole tape, but it can't be greater than there
+actually is.
 
 ```js
 $('#tape').tape({
@@ -61,28 +62,28 @@ $('#tape').tape({
 });
 ```
     
-По умолчанию используется 0 (то есть анимация происходить не будет).
+Default: `0` (that is no animation by default).
 
-### frameHeight (integer / float)
+### frameHeight (integer)
 
-Высота кадра. Иными словами, смещение спрайта при переходе к следующему кадру.
+Frame height in pixels. In other words, background image offset for the second frame.
 
 ```js
 $('#tape').tape({
     frameHeight: 250
 });
 ```
-    
-По умолчанию устанавливается равной высоте блока.
+
+Default: same as DOM element height.
 
 ### frameChangeDuration (integer)
 
-Продолжительность смены кадра в милисекундах . Если настройка gradually выставлена
-в true, то frameChangeDuration будет означать продолжительность перетекания
-одного кадра в другой. В этом случае, если будет вызваны методы для перехода к
-другом кадрам чаще, чем значение frameChangeDuration, перетекания всё равно
-будут занимать устоновленное время, что может привести к некоторому
-запаздыванию анимации.
+Duration of transition between frames in milliseconds for `gradually` mode,
+for normal mode - number of milliseconds each frame is visible during animation.
+
+If `gradually` is set to `true`, you might experience slowdowns in animations
+when calling widget methods more frequently than `frameChangeDuration` as transitions
+will take the same amount of time.
 
 ```js
 $('#tape').tape({
@@ -90,14 +91,13 @@ $('#tape').tape({
 });
 ```
     
-По умолчанию 50.
+Default: `50`.
 
 ### backgroundX (integer)
 
-Смещение спрайта с анимацией в изображении по оси x. Используется в случаях,
-когда в одном спрайте содержится несколько анимаций. В этом случае все анимации
-начинаются с верхнего края изображения, кадры идут сверху вниз, а смещение по
-оси x задаёт нужный спрайт.
+Background horizontal offset (by x axis). Useful when you have several
+sprites joined together in one background image. In this case animations start
+from the top frame and continue to bottom (offset specifies correct sprite).
 
 ```js
 $('#tape').tape({
@@ -105,12 +105,12 @@ $('#tape').tape({
 });
 ```
     
-По умолчанию 0.
+Default: `0`.
 
 ### preload (boolean)
 
-Предзагрузка изображения со спрайтом и отображение анимаций только после этого
-события. После загрузки возбуждается событие `tape-loaded` на элементе.
+Background image with a psrite is preloaded and animation starts only after it
+finished. After loading `tape-loaded` event is triggered on the element.
 
 ```js
 $('#tape').tape({
@@ -118,11 +118,11 @@ $('#tape').tape({
 });
 ```
     
-По умолчанию true.
+Default: `true`.
 
-## Опции через data-атрибуты
+## Options via data-attributes
 
-Опции можно задать через соответствующие data-атрибуты:
+Options can be set up using corresponding `data-` attributes:
 
 **Option**          | **Data attribute**         |
 --------------------|----------------------------|
@@ -133,23 +133,25 @@ frameHeight         | data-frame-height          |
 frameChangeDuration | data-frame-change-duration |
 preload             | data-preload               |
 
+```html
+<div id="b-tape" data-frame-count="20" data-frame-height="150"></div>
+```
 
-## Методы
+
+## Methods
 
 
 ### windToNext
 
-Прокрутка к следующему кадру спрайта. Если до вызова отображался последний кадр,
-то будет показан первый.
+Wind sprite to the next frame. If current frame is the last one, the first fame is displayed.
 
 ```js
 $('#tape').tape('windToNext');
 ```
 
-### windToNext
+### windToPrev
 
-Прокрутка к предыдущему кадру спрайта. Если до вызова отображался первый кадр,
-то будет показан последний.
+Wind sprite to the previous frame. If current frame is the first one, the last fame is displayed.
 
 ```js
 $('#tape').tape('windToPrev');
@@ -157,54 +159,56 @@ $('#tape').tape('windToPrev');
 
 ### windTo
 
-Прокрутка к заданному кадру, минуя промежуточные. Если настройка gradually
-установлена в true, трансформация займёт время (frameChangeDuration мс).
+Wind to specific frame, skipping intermediate frames. If `gradually` is
+set to `true` this transitions takes `frameChangeDuration` milliseconds.
 
 ```js
 $('#tape').tape('windTo', 0.6, true);
 ```
 
-Параметры:
+Parameters:
 
-* position — индекс кадра, к которому прокручивается плёнка.
-* isRelative — способ указания номера кадра:
-    * true — position принимает значения от 0 до 1 и указывает положение кадра в плёнке, или
-    * false (по умолчанию) — position целочисленный и указывает номер кадра.
+* position — target frame index (to which tape is animated).
+* isRelative — frame index type:
+    * true — position takes float values between 0 and 1 and corresponds to frame position in the tape, or
+    * false (default) — position is integer and correspons to frame number.
 
 ### stepInTo
 
-Прокрутка к заданному кадру путём поочерёдного переключения кадров, начиная с
-текущего. Каждое переключение займёт заданное время (frameChangeDuration мс).
+Animate the tape from the current frame to the target one, not skipping frames, opposite
+to what `WindTo` does. Each transition between frames takes `frameChangeDuration` milliseconds.
 
 ```js
 $('#tape').tape('stepInTo', 36, false, function(){
-    console.log('Конец анимации');
+    console.log('Animation is finished');
 });
 ```
 
-Параметры:
+Parameters:
 
-* position — индекс кадра.
-* isRelative — способ указания номера кадра (аналогично предыдущему методу).
-* callback — обратный вызов при достижении целевого кадра. Вызывается после
-окончания всех анимаций в рамках вызова метода.
+* position — target frame index (to which tape is animated).
+* isRelative — frame index type:
+    * true — position takes float values between 0 and 1 and corresponds to frame position in the tape, or
+    * false (default) — position is integer and correspons to frame number.
+* callback — callback, which is fired after reaching target frame. It's called after all animations
+within the bounds of this method are done.
 
 ### setPosition
 
-Установка заданного кадра без всяких анимаций. Применение — инициализация
-виджета, если анимация должна начинаться не с первого кадра.
+Change current frame without any animation at all. Useful for widget initialization,
+when your animation shouldn't start from the very first frame.
 
 ```js
 $('#tape').tape('setPosition', 14);
 ```
 
-Параметры:
+Parameters:
 
-* position — индекс кадра.
+* position — target frame index.
 
 ### setOptions
 
-Метод позволяет измененять настройки «на лету».
+This method supports options change "on the fly".
 
 ```js
 $('#tape').tape('setOptions', {
@@ -213,30 +217,30 @@ $('#tape').tape('setOptions', {
 });
 ```
 
-Параметры:
+Parameters:
 
-* options — объект настроек.
+* options — settings object.
 
 ### getOption
 
-Получение текущей настройки виджета.
+Get current settings value.
 
 ```js
 var height = $('#tape').tape('getOption', 'frameHeight');
 ```
 
-Параметры:
+Parameters:
 
-* optionName — название настройки.
+* optionName — option name.
 
 
-## Поведения
+## Behaviors
 
 
 ### rotate
 
-Перемотка плёнки назад-вперёд при помощи мыши (движения с нажатой левой кнопкой).
-Используется для имитации вращения.
+Animate the tape backwards and forwards with the left mouse button pressed and the
+mouse cursor is moving. It's used to emulate rotation.
 
 ```js
 $('#tape').tape('rotate', {
@@ -249,14 +253,12 @@ $('#tape').tape('rotate', {
 });
 ```
 
-Параметры:
+Parameters:
 
-* options — объект с настройками:
-    * element — jQuery-элемент, на котором будет активизировано управление мышью.
-По умолчанию — сама плёнка.
-    * deltaX — смещение курсора мыши, воспринимаемое как минимальный шаг для начала
-вращения. Чем больше, тем медленнее вращается плёнка.
-    * destroy — true, усли нужно отвязать поведение от элемента.
-    * direction — направление движения плёнки при движении курсора мыши вправо:
-1 для движения вниз и -1 для движения вверх.
-
+* options — settings object:
+    * element — jQuery-element, which will acquire rotation behavior. By default, it's the original
+tape element.
+    * deltaX — minimal cursor movement, required for animation to start. Larger `deltaX`, slower the tape rotation.
+    * destroy — set to `true` when you need to disable rotation behavior.
+    * direction — the directon of tape movement when the mouse cursor moves right:
+1 for down, -1 for up.
