@@ -1,33 +1,33 @@
-# Виджет jQuery.fc.tape
+# jQuery.fc.tape widget
 
-Виджет, эмулирующий поведение киноплёнки для анимаций. Анимируется фоновое изображение,
-состоящее из кадров, склеенных в спрайт. Виджет позволяет задавать плавность, временные
-характеристики, а также управлять поведением различными способами.
+jQuery widget for sprite animations. Background image (sprite) consisting of picture frames
+like the movie tape is animated. Widget supports options to adjust smothness and speed of animations
+as well as methods to control animation behavior.
 
 
-## Подключение
+## Installation
 
-Для использования `jQuery.fc.tape` необходимы:
+`jQuery.fc.tape` has following dependencies:
 
 * [jQuery](http://jquery.com/) и
 * [jQuery UI](http://jqueryui.com/) (Core и Widget)
 
 
-## Вызов
+## Usage
 
 ```js
 $('#element').tape(options);
 ```
 
 
-## Опции
+## Options
 
 
 ### gradually (boolean)
 
-Переключать кадры с плавным наложением следующего на текущий (применимо при
-малом количестве кадров, невысокой скорости переключения и для некоторых
-эффектов).
+Switch frames with smooth transition (next frame overlays previous with a small
+transparent fade). Useful for animations with a small number of frames,
+slow speed animations and for several effects.
 
 ```js
 $('#tape').tape({
@@ -35,12 +35,12 @@ $('#tape').tape({
 });
 ```
     
-По умолчанию true.
+Default: `true`.
 
 ### image (string)
 
-Путь к изображению (спрайту с кадрами). Кадры должны располагаться один
-под другим.
+Background image path (sprite with frames to animate). Frames should be aligned
+vertially, top to bottom.
 
 ```js
 $('#tape').tape({
@@ -48,12 +48,13 @@ $('#tape').tape({
 });
 ```
     
-По умолчанию используется фоновое изображение элемента.
+Default: DOM element's backgound-image is used.
 
 ### frameCount (integer)
 
-Количество кадров, участвующих в анимации. Не обязательно должно быть равно
-реальному количеству кадров в спрайте, но как минимум должно быть не больше.
+Number of frames in animation. It can be less than real number of frames,
+if you don't want to use the whole tape, but it can't be greater than there
+actually is.
 
 ```js
 $('#tape').tape({
@@ -61,28 +62,28 @@ $('#tape').tape({
 });
 ```
     
-По умолчанию используется 0 (то есть анимация происходить не будет).
+Default: `0` (that is no animation by default).
 
-### frameHeight (integer / float)
+### frameHeight (integer)
 
-Высота кадра. Иными словами, смещение спрайта при переходе к следующему кадру.
+Frame height in pixels. In other words, background image offset for the second frame.
 
 ```js
 $('#tape').tape({
     frameHeight: 250
 });
 ```
-    
-По умолчанию устанавливается равной высоте блока.
+
+Default: same as DOM element height.
 
 ### frameChangeDuration (integer)
 
-Продолжительность смены кадра в милисекундах . Если опция gradually выставлена
-в true, то frameChangeDuration будет означать продолжительность перетекания
-одного кадра в другой. В этом случае, если будет вызваны методы для перехода к
-другом кадрам чаще, чем значение frameChangeDuration, перетекания всё равно
-будут занимать устоновленное время, что может привести к некоторому
-запаздыванию анимации.
+Duration of transition between frames in milliseconds for `gradually` mode,
+for normal mode - number of milliseconds each frame is vivible during animation.
+
+If `gradually` is set to `true`, you might experience slowdowns in animations
+when calling widget methods more frequently than `frameChangeDuration` as transitions
+will take the same amount of time.
 
 ```js
 $('#tape').tape({
@@ -90,14 +91,13 @@ $('#tape').tape({
 });
 ```
     
-По умолчанию 50.
+Default: `50`.
 
 ### backgroundX (integer)
 
-Смещение спрайта с анимацией в изображении по оси x. Используется в случаях,
-когда в одном спрайте содержится несколько анимаций. В этом случае все анимации
-начинаются с верхнего края изображения, кадры идут сверху вниз, а смещение по
-оси x задаёт нужный спрайт.
+Beackground horizontal offset (by x axis). Useful when you have several
+sprites joined together in one background image. In this case animations start
+from the top frame and continue to bottom (offset specifies correct sprite).
 
 ```js
 $('#tape').tape({
@@ -105,7 +105,7 @@ $('#tape').tape({
 });
 ```
     
-По умолчанию 0.
+Default: `0`.
 
 ### preload (boolean)
 
@@ -118,11 +118,11 @@ $('#tape').tape({
 });
 ```
     
-По умолчанию true.
+Default: `true`.
 
-## Опции через data-атрибуты
+## Options via data-attributes
 
-Опции можно задать через соответствующие data-атрибуты:
+Options can be set up using corresponding `data-` attributes:
 
 **Option**          | **Data attribute**         |
 --------------------|----------------------------|
@@ -133,11 +133,15 @@ frameHeight         | data-frame-height          |
 frameChangeDuration | data-frame-change-duration |
 preload             | data-preload               |
 
+```html
+<div id="b-tape" data-frame-count="20" data-frame-height="150"></div>
+```
 
-## Методы
+
+## Methods
 
 
-### windToNext
+### .windToNext()
 
 Прокрутка к следующему кадру спрайта. Если до вызова отображался последний кадр, то будет показан первый.
 
@@ -145,7 +149,7 @@ preload             | data-preload               |
 $('#tape').tape('windToNext');
 ```
 
-### windToNext
+### .windToNext()
 
 Прокрутка к предыдущему кадру спрайта. Если до вызова отображался первый кадр, то будет показан последний.
 
@@ -178,7 +182,7 @@ $('#tape').tape('windToPrev');
 * `optionName` — название настройки.
 
 
-### Поведения
+### Behaviors
 
 `rotate` — перемещение плёнки назад-вперёд при помощи мыши. Используется для имитации вращения.
 Принимает один параметр — объект с настройками:
