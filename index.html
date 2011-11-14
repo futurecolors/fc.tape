@@ -1,88 +1,190 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-  <meta charset='utf-8'>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>futurecolors/jQuery.fc.tape @ GitHub</title>
+    <title>jQuery.fc.tape demo page</title>
 
-  <style type="text/css">
-    body {
-      margin-top: 1.0em;
-      background-color: #7863d1;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    #container {
-      margin: 0 auto;
-      width: 700px;
-    }
-    h1 { font-size: 3.8em; color: #879c2e; margin-bottom: 3px; }
-    h1 .small { font-size: 0.4em; }
-    h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #879c2e; }
-    h3 { text-align: center; color: #879c2e; }
-    a { color: #879c2e; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-    pre { background: #000; color: #fff; padding: 15px;}
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; font-style: italic; }
-  </style>
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+
+    <script type="text/javascript" src="http://yandex.st/jquery/1.6.4/jquery.min.js"></script>
+    <script type="text/javascript" src="http://yandex.st/jquery-ui/1.8.16/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="../jquery.fc.tape.js"></script>
+    <script type="text/javascript" src="script.js"></script>
 </head>
-
 <body>
-  <a href="https://github.com/futurecolors/jQuery.fc.tape"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+    <header class="b-header">
+        <h1 class="b-header__title">jQuery.fc.tape demo page</h1>
+    </header>
 
-  <div id="container">
+    <section class="b-sample">
+        <h1 class="b-sample__header">Main settings</h1>
 
-    <div class="download">
-      <a href="https://github.com/futurecolors/jQuery.fc.tape/zipball/master">
-        <img border="0" width="90" src="https://github.com/images/modules/download/zip.png"></a>
-      <a href="https://github.com/futurecolors/jQuery.fc.tape/tarball/master">
-        <img border="0" width="90" src="https://github.com/images/modules/download/tar.png"></a>
-    </div>
+        <div class="l-sample__description">
+            <p class="b-sample__text">CSS code:</p>
+            <pre class="b-code b-sample_code_css"><code>.b-tape {
+    width: 420px;
+    height: 315px;
+    background: url(tape.png) 0px 0px no-repeat;
+}</code></pre>
+            <p class="b-sample__text">JS code (tape activation):</p>
+            <pre class="b-code b-sample_code_js"><code>$('.js-sample__tape').tape();</code></pre>
+        </div>
+        <div class="g-clear"></div>
+    </section>
 
-    <h1><a href="https://github.com/futurecolors/jQuery.fc.tape">jQuery.fc.tape</a>
-      <span class="small">by <a href="https://github.com/futurecolors">futurecolors</a></span></h1>
+    <section class="b-sample" id="gradually">
+        <h1 class="b-sample__header">Feature "gradually"</h1>
 
-    <div class="description">
-      Widget for cinema-tape style animations.
-    </div>
+        <div class="l-sample__description">
+            <p class="b-sample__text">HTML code:</p>
+            <pre class="b-code b-sample_code_html"><code>&lt;div class="b-tape js-sample__tape"
+     data-frame-count="40"
+     data-frame-change-duration="200"
+     data-gradually="<b>false</b>"&gt;&lt;/div&gt;</code></pre>
+            <p class="b-sample__text">and</p>
+            <pre class="b-code b-sample_code_html"><code>&lt;div class="b-tape js-sample__tape"
+     data-frame-count="40"
+     data-frame-change-duration="200"
+     data-gradually="<b>true</b>"&gt;&lt;/div&gt;</code></pre>
+            <p class="b-sample__text">JS code (tape usage):</p>
+            <pre class="b-code b-sample_code_js"><code>$('.js-sample_1 .js-sample__button,
+   .js-sample_2 .js-sample__button').click(function(){
+    $(this)
+        .closest('.js-sample')
+        .find('.js-sample__tape')
+        <b>.tape('stepInTo', 4);</b>
+});</code></pre>
+        </div>
+        <div class="l-sample__tape">
+            <div class="l-tape js-sample js-sample_1">
+                <div class="b-tape_bonpari js-sample__tape"
+                     data-frame-count="5"
+                     data-frame-change-duration="200"
+                     data-gradually="false"></div>
+                <button class="b-tape__run-button js-sample__button">Run in discrete mode!</button>
+            </div>
+            <div class="l-tape js-sample js-sample_2">
+                <div class="b-tape_bonpari js-sample__tape"
+                     data-frame-count="5"
+                     data-frame-change-duration="200"
+                     data-gradually="true"></div>
+                <button class="b-tape__run-button js-sample__button">Run with gradually!</button>
+            </div>
+        </div>
+        <div class="g-clear"></div>
+    </section>
 
-    
+    <section class="b-sample" id="wind-to-next-prev">
+        <h1 class="b-sample__header">Methods windToNext and windToPrev</h1>
+        <div class="l-sample__description">
+            <p class="b-sample__text">HTML code for this and follow samples:</p>
+            <pre class="b-code b-sample_code_html"><code>&lt;div class="b-tape js-sample__tape"
+     data-frame-count="40"
+     data-frame-change-duration="150"&gt;&lt;/div&gt;</code></pre>
+            <p class="b-sample__text">JS code:</p>
+            <pre class="b-code b-sample_code_js"><code>$('.js-sample_3 .js-sample__tape')
+    .bind('mouseenter mouseleave', function(){
+        $(this)
+            <b>.tape('windToNext');</b>
+    });
+$('.js-sample_4 .js-sample__tape')
+    .bind('mouseenter mouseleave', function(){
+        $(this)
+            <b>.tape('windToPrev');</b>
+    });</code></pre>
+        </div>
+        <div class="l-sample__tape">
+            <div class="l-tape js-sample js-sample_3">
+                <div class="b-tape js-sample__tape"
+                     data-frame-count="40"
+                     data-frame-change-duration="150"></div>
+                <div class="b-tape__label">Mouse it! windToNext</div>
+            </div>
+            <div class="l-tape js-sample js-sample_4">
+                <div class="b-tape js-sample__tape"
+                     data-frame-count="40"
+                     data-frame-change-duration="150"></div>
+                <div class="b-tape__label">Mouse it! windToPrev</div>
+            </div>
+        </div>
+        <div class="g-clear"></div>
+    </section>
 
-    
+    <section class="b-sample" id="wind-to-step-in-to">
+        <h1 class="b-sample__header">Methods windTo and stepInTo</h1>
+        <div class="l-sample__description">
+            <p class="b-sample__text">
+                Difference between windTo and stepInTo methods is that the first
+                method change frame without progressive transition.
+            </p>
+            <p class="b-sample__text">JS code:</p>
+            <pre class="b-code b-sample_code_js"><code>$('.js-sample_5 .js-sample__button').click(function(){
+    $(this)
+        .closest('.js-sample')
+        .find('.js-sample__tape')
+        <b>.tape('windTo', 20);</b>
+});
+$('.js-sample_6 .js-sample__button').click(function(){
+    $(this)
+        .closest('.js-sample')
+        .find('.js-sample__tape')
+        <b>.tape('stepInTo', 20);</b>
+});</code></pre>
+            <p class="b-sample__text">
+                The second method can be used for smooth transitions between
+                the states. Speed regulated by the changeDuration option.
+            </p>
+        </div>
+        <div class="l-sample__tape">
+            <div class="l-tape js-sample js-sample_5">
+                <div class="b-tape js-sample__tape"
+                     data-frame-count="40"
+                     data-frame-change-duration="150"></div>
+                <button class="b-tape__run-button js-sample__button">Run windTo transition!</button>
+            </div>
+            <div class="l-tape js-sample js-sample_6">
+                <div class="b-tape js-sample__tape"
+                     data-frame-count="40"
+                     data-frame-change-duration="150"></div>
+                <button class="b-tape__run-button js-sample__button">Run stepInTo transition!</button>
+            </div>
+        </div>
+        <div class="g-clear"></div>
+    </section>
 
-    
-
-    
-
-    
-      <h2>Authors</h2>
-      <p>piumosso (golikoffartem@gmail.com)<br/>Ilya Baryshev (baryshev@gmail.com)<br/>      </p>
-    
-
-    
-      <h2>Contact</h2>
-      <p>Future Colors (info@futurecolors.ru)<br/>      </p>
-    
-
-    <h2>Download</h2>
-    <p>
-      You can download this project in either
-      <a href="https://github.com/futurecolors/jQuery.fc.tape/zipball/master">zip</a> or
-      <a href="https://github.com/futurecolors/jQuery.fc.tape/tarball/master">tar formats.
-    </p>
-    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
-      by running:
-      <pre>$ git clone git://github.com/futurecolors/jQuery.fc.tape</pre>
-    </p>
-
-    <div class="footer">
-      get the source code on GitHub : <a href="https://github.com/futurecolors/jQuery.fc.tape">futurecolors/jQuery.fc.tape</a>
-    </div>
-
-  </div>
-
+    <section class="b-sample" id="rotate-behavior">
+        <h1 class="b-sample__header">Rotate behavior</h1>
+        <div class="l-sample__description">
+            <p class="b-sample__text">JS code:</p>
+            <pre class="b-code b-sample_code_js"><code>$('.js-sample_7 .js-sample__tape')
+    <b>.tape('rotate');</b>
+$('.js-sample_7 .js-sample__tape')
+    .tape('rotate', <b>{
+        element: $('.js-sample_7 .js-sample__rotation-handler'),
+        direction: -1,
+        deltaX: 5
+    }</b>);</code></pre>
+            <p class="b-sample__text">
+                In this sample rotation rotation behavior apply to the tape and
+                to green helper (with options). deltaX option reduces the speed.
+            </p>
+        </div>
+        <div class="l-sample__tape">
+            <div class="l-tape js-sample js-sample_7">
+                <div class="b-tape js-sample__tape"
+                     data-frame-count="40"
+                     data-frame-change-duration="150"></div>
+                <div class="b-tape__label">Rotate it! Drag the image</div>
+                <div class="b-sample__rotation-handler js-sample__rotation-handler"
+                     unselectable="on">
+                    ... or the bar
+                </div>
+            </div>
+        </div>
+        <div class="g-clear"></div>
+    </section>
 </body>
 </html>
