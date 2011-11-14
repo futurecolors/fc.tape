@@ -9,7 +9,7 @@ as well as methods to control animation behavior.
 
 `jQuery.fc.tape` has following dependencies:
 
-* [jQuery](http://jquery.com/) и
+* [jQuery](http://jquery.com/) and
 * [jQuery UI](http://jqueryui.com/) (Core и Widget)
 
 
@@ -79,7 +79,7 @@ Default: same as DOM element height.
 ### frameChangeDuration (integer)
 
 Duration of transition between frames in milliseconds for `gradually` mode,
-for normal mode - number of milliseconds each frame is vivible during animation.
+for normal mode - number of milliseconds each frame is visible during animation.
 
 If `gradually` is set to `true`, you might experience slowdowns in animations
 when calling widget methods more frequently than `frameChangeDuration` as transitions
@@ -95,7 +95,7 @@ Default: `50`.
 
 ### backgroundX (integer)
 
-Beackground horizontal offset (by x axis). Useful when you have several
+Background horizontal offset (by x axis). Useful when you have several
 sprites joined together in one background image. In this case animations start
 from the top frame and continue to bottom (offset specifies correct sprite).
 
@@ -109,8 +109,8 @@ Default: `0`.
 
 ### preload (boolean)
 
-Предзагрузка изображения со спрайтом и отображение анимаций только после этого
-события. После загрузки возбуждается событие `tape-loaded` на элементе.
+Background image with a psrite is preloaded and animation starts only after it
+finished. After loading `tape-loaded` event is triggered on the element.
 
 ```js
 $('#tape').tape({
@@ -170,7 +170,7 @@ Parameters:
 
 * position — target frame index (to which tape is animated).
 * isRelative — frame index type:
-    * true — position takes float values between 0 and 1 and correspons to frame position in the tape, or
+    * true — position takes float values between 0 and 1 and corresponds to frame position in the tape, or
     * false (default) — position is integer and correspons to frame number.
 
 ### stepInTo
@@ -188,7 +188,7 @@ Parameters:
 
 * position — target frame index (to which tape is animated).
 * isRelative — frame index type:
-    * true — position takes float values between 0 and 1 and correspons to frame position in the tape, or
+    * true — position takes float values between 0 and 1 and corresponds to frame position in the tape, or
     * false (default) — position is integer and correspons to frame number.
 * callback — callback, which is fired after reaching target frame. It's called after all animations
 within the bounds of this method are done.
@@ -256,8 +256,8 @@ $('#tape').tape('rotate', {
 Parameters:
 
 * options — settings object:
-    * element — jQuery-elemnet, which will acqure rotation behavior. By default, it's the original
-tapge element.
+    * element — jQuery-element, which will acquire rotation behavior. By default, it's the original
+tape element.
     * deltaX — minimal cursor movement, required for animation to start. Larger `deltaX`, slower the tape rotation.
     * destroy — set to `true` when you need to disable rotation behavior.
     * direction — the directon of tape movement when the mouse cursor moves right:
