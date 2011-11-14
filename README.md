@@ -141,56 +141,124 @@ preload             | data-preload               |
 ## Methods
 
 
-### .windToNext()
+### windToNext
 
-Прокрутка к следующему кадру спрайта. Если до вызова отображался последний кадр, то будет показан первый.
+Wind sprite to the next frame. If current frame is the last one, the first fame is displayed.
 
 ```js
 $('#tape').tape('windToNext');
 ```
 
-### .windToNext()
+### windToPrev
 
-Прокрутка к предыдущему кадру спрайта. Если до вызова отображался первый кадр, то будет показан последний.
+Wind sprite to the previous frame. If current frame is the first one, the last fame is displayed.
 
 ```js
 $('#tape').tape('windToPrev');
 ```
 
-`windTo` — перемещение к заданной позиции, минуя промежуточные кадры, параметры:
+### windTo
 
-* `position` — позиция;
-* `isRelative` — способ указания кадра относительно всей ленты (isRelative == true) и
-целочисленный position для указания конкретного кадра;
+Wind to specific frame, skipping intermediate frames. If `gradually` is
+set to `true` this transitions takes `frameChangeDuration` milliseconds.
 
-`stepInTo` — прокрутка к заданной позиции путём поступательного перемещения по кадрам, параметры:
+```js
+$('#tape').tape('windTo', 0.6, true);
+```
 
-* `position` — позиция;
-* `isRelative` — аналогично `windTo`;
-* `callback` — обратный вызов после всех анимаций в рамках прокрутки;
+Parameters:
 
-`setPosition` — установка позиции без анимаций, параметры:
+* position — target frame index (to which tape is animated).
+* isRelative — frame index type:
+    * true — position takes float values between 0 and 1 and correspons to frame position in the tape, or
+    * false (default) — position is integer and correspons to frame number.
 
-* `position` — позиция;
+### stepInTo
 
-`setOptions` — изменение настроек «на лету», параметры:
+Animate the tape from the current frame to the target one, not skipping frames, opposite
+to what `WindTo` does. Each transition between frames takes `frameChangeDuration` milliseconds.
 
-* `options` — объект настроек.
+```js
+$('#tape').tape('stepInTo', 36, false, function(){
+    console.log('Animation is finished');
+});
+```
 
-`getOption` — получение значения настройки, параметры:
+Parameters:
 
-* `optionName` — название настройки.
+* position — target frame index (to which tape is animated).
+* isRelative — frame index type:
+    * true — position takes float values between 0 and 1 and correspons to frame position in the tape, or
+    * false (default) — position is integer and correspons to frame number.
+* callback — callback, which is fired after reaching target frame. It's called after all animations
+within the bounds of this method are done.
+
+### setPosition
+
+Change current frame without any animation at all. Useful for widget initialization,
+when your animation shouldn't start from the very first frame.
+
+```js
+$('#tape').tape('setPosition', 14);
+```
+
+Parameters:
+
+* position — target frame index.
+
+### setOptions
+
+This method supports options change "on the fly".
+
+```js
+$('#tape').tape('setOptions', {
+    frameCount: 37
+    frameChangeDuration: 70
+});
+```
+
+Parameters:
+
+* options — settings object.
+
+### getOption
+
+Get current settings value.
+
+```js
+var height = $('#tape').tape('getOption', 'frameHeight');
+```
+
+Parameters:
+
+* optionName — option name.
 
 
-### Behaviors
+## Behaviors
 
-`rotate` — перемещение плёнки назад-вперёд при помощи мыши. Используется для имитации вращения.
-Принимает один параметр — объект с настройками:
 
-* `element` — $-элемент, на котором будет активизировано управление мышью. По умолчанию — сама плёнка.
-* `deltaX` — смещение курсора мыши, воспринимаемое как минимальный шаг для начала вращения.
-Чем больше, тем медленнее вращается плёнка.
-* `destroy` — true, усли нужно отвязать поведение от элемента.
-* `direction` — направление движения плёнки при движении курсора мыши вправо: 1 для движения
-вниз и -1 для движения вверх.
+### rotate
 
+Animate the tape backwards and forwards with the left mouse button pressed and the
+mouse cursor is moving. It's used to emulate rotation.
+
+```js
+$('#tape').tape('rotate', {
+    element: $('#handler'),
+    deltaX: 3
+});
+// ...
+$('#tape').tape('rotate', {
+    destroy: true
+});
+```
+
+Parameters:
+
+* options — settings object:
+    * element — jQuery-elemnet, which will acqure rotation behavior. By default, it's the original
+tapge element.
+    * deltaX — minimal cursor movement, required for animation to start. Larger `deltaX`, slower the tape rotation.
+    * destroy — set to `true` when you need to disable rotation behavior.
+    * direction — the directon of tape movement when the mouse cursor moves right:
+1 for down, -1 for up.
