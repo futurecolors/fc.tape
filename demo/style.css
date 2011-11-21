@@ -89,11 +89,12 @@ b {
  * @subsection  Tape
  */
 
-.b-tape {
-    width: 289px;
-    height: 193px;
+.b-tape {}
+.b-tape_ipad {
+    width: 330px;
+    height: 220px;
     margin-top: 10px;
-    background: url(tape.png) 0px 0px no-repeat;
+    background: url(ipad.png) 0px 0px no-repeat;
 }
 .b-tape_bonpari {
     width: 350px;
