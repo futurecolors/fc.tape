@@ -1,4 +1,4 @@
-# jQuery.fc.tape widget
+# fc.tape widget
 
 jQuery widget for sprite animations. Background image (sprite) consisting of picture frames
 like the movie tape is animated. Widget supports options to adjust smothness and speed of animations
