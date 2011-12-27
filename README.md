@@ -7,10 +7,10 @@ as well as methods to control animation behavior.
 
 ## Installation
 
-`jQuery.fc.tape` has following dependencies:
+`fc.tape` has following dependencies:
 
 * [jQuery](http://jquery.com/) and
-* [jQuery UI](http://jqueryui.com/) (Core и Widget)
+* [jQuery UI](http://jqueryui.com/) (Core and Widget)
 
 
 ## Usage

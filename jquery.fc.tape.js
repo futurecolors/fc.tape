@@ -39,7 +39,7 @@ $.widget('fc.tape', {
     /**
      * Widget initialization
      */
-    _init: function(options){
+    _init: function(){
         this._initOptionFromData('frameCount', 0, parseInt);
         this._initOptionFromData('frameChangeDuration', 50, parseInt);
         this._initOptionFromData('gradually', true);
@@ -55,7 +55,7 @@ $.widget('fc.tape', {
         }
         if (this.element.css('backgroundImage') == 'none' && this.isLoaded) {
             this.element.css('background', 'url(' + this.options.image + ') ' +
-                             this.options.backgroundX + 'px 0px no-repeat');
+                this.options.backgroundX + 'px 0px no-repeat');
         }
 
         if (this.element.css('position') == 'static') {
@@ -207,7 +207,7 @@ $.widget('fc.tape', {
             timeout = window.setInterval(function(){
                 that.position += positionStep;
                 that._changeFrame();
-                if (that.position >= targetPosition) {
+                if (that.position * positionStep >= targetPosition * positionStep) {
                     clearTimeout(timeout);
                     if (typeof callback == 'function') {
                         callback();
@@ -236,6 +236,7 @@ $.widget('fc.tape', {
         }
         var nextFrameBackgroundPosition = this.options.backgroundX + 'px -' + (this.position * this.options.frameHeight) + 'px';
         this.element.css('backgroundPosition', nextFrameBackgroundPosition);
+        this.element.css('backgroundImage', this.options.image);
     },
 
     /**
@@ -250,7 +251,7 @@ $.widget('fc.tape', {
             destroy: false,
             direction: 1
         }, options);
-        
+
         if (options.destroy) {
             options.element.unbind('.rotate');
             return;
@@ -263,9 +264,9 @@ $.widget('fc.tape', {
 
         options.element
             .bind('mousedown.rotate', function(){
-                isActive = true;
-                that.options.gradually = false;
-            })
+            isActive = true;
+            that.options.gradually = false;
+        })
             .bind('mouseup.rotate mouseleave.rotate', function(){
                 isActive = false;
                 that.options.gradually = initialGradually;
