@@ -24,67 +24,29 @@
 
     <div class="wrapper">
         <section class="section">
+            <div class="section__important-description">
+                <strong>tape.js</strong> &mdash; jQuery widget for sprite animations.
+            </div>
+            <div class="section__important-description">
+                Background image (sprite) consisting of picture frames
+                like the movie tape is animated. Widget supports options to adjust smothness and speed of animations
+                as well as methods to control animation behavior.
+            </div>
+        </section>
+
+        <section class="section">
             <header class="section__header">
                 <h1 class="section__title">Common settings</h1>
             </header>
             <div class="l-sample__description">
                 <p class="section__content">CSS code:</p>
                 <pre class="b-code b-sample_code_css"><code class="css">.b-tape {
-        width: 420px;
-        height: 315px;
-        background: url(tape.png) 0px 0px no-repeat;
-    }</code></pre>
+    width: 420px;
+    height: 315px;
+    background: url(tape.png) 0px 0px no-repeat;
+}</code></pre>
                 <p class="section__content">JS code (tape activation):</p>
                 <pre class="b-code b-sample_code_js"><code class="js">$('.js-sample__tape').tape();</code></pre>
-            </div>
-            <div class="g-clear"></div>
-        </section>
-
-        <section class="section" id="gradually">
-            <header class="section__header">
-                <h1 class="section__title">Feature "gradually"</h1>
-            </header>
-            <div class="section__code">
-                <p class="section__content">HTML code:</p>
-                <pre class="b-code b-sample_code_html"><code class="html">&lt;div class="b-tape js-sample__tape"
-         data-frame-count="32"
-         data-frame-change-duration="200"
-         data-gradually="<b>false</b>"&gt;&lt;/div&gt;</code></pre>
-                <p class="section__content">and</p>
-                <pre class="b-code b-sample_code_html"><code class="html">&lt;div class="b-tape js-sample__tape"
-         data-frame-count="32"
-         data-frame-change-duration="200"
-         data-gradually="<b>true</b>"&gt;&lt;/div&gt;</code></pre>
-                <p class="section__content">JS code (tape usage):</p>
-                <pre class="b-code b-sample_code_js"><code class="js">$('.js-sample_1 .js-sample__button,
-       .js-sample_2 .js-sample__button').click(function(){
-        $(this)
-            .closest('.js-sample')
-            .find('.js-sample__tape')
-            <b>.tape('stepInTo', 4);</b>
-    });</code></pre>
-            </div>
-            <div class="section__sample">
-                <div class="tape-wrapper js-sample js-sample_1">
-                    <div class="tape tape_bonpari js-sample__tape"
-                         data-frame-count="5"
-                         data-frame-change-duration="200"
-                         data-gradually="false"></div>
-                    <div class="tape-wrapper__mask"></div>
-                    <div class="tape-wrapper__run">
-                        <button class="tape-wraper__run-button js-sample__button">Run in discrete mode!</button>
-                    </div>
-                </div>
-                <div class="tape-wrapper js-sample js-sample_2">
-                    <div class="tape tape_bonpari js-sample__tape"
-                         data-frame-count="5"
-                         data-frame-change-duration="200"
-                         data-gradually="true"></div>
-                    <div class="tape-wrapper__mask"></div>
-                    <div class="tape-wrapper__run">
-                        <button class="tape-wraper__run-button js-sample__button">Run with gradually!</button>
-                    </div>
-                </div>
             </div>
             <div class="g-clear"></div>
         </section>
@@ -96,19 +58,19 @@
             <div class="section__code">
                 <p class="section__content">HTML code for this and follow samples:</p>
                 <pre class="b-code b-sample_code_html"><code class="html">&lt;div class="b-tape js-sample__tape"
-         data-frame-count="32"
-         data-frame-change-duration="80"&gt;&lt;/div&gt;</code></pre>
+     data-frame-count="32"
+     data-frame-change-duration="80"&gt;&lt;/div&gt;</code></pre>
                 <p class="section__content">JS code:</p>
                 <pre class="b-code b-sample_code_js"><code class="js">$('.js-sample_3 .js-sample__tape')
-        .bind('mouseenter mouseleave', function(){
-            $(this)
-                <b>.tape('windToNext');</b>
-        });
-    $('.js-sample_4 .js-sample__tape')
-        .bind('mouseenter mouseleave', function(){
-            $(this)
-                <b>.tape('windToPrev');</b>
-        });</code></pre>
+    .bind('mouseenter mouseleave', function(){
+        $(this)
+            <b>.tape('windToNext');</b>
+    });
+$('.js-sample_4 .js-sample__tape')
+    .bind('mouseenter mouseleave', function(){
+        $(this)
+            <b>.tape('windToPrev');</b>
+    });</code></pre>
             </div>
             <div class="section__sample">
                 <div class="tape-wrapper js-sample js-sample_3">
@@ -144,17 +106,17 @@
                 </p>
                 <p class="section__content">JS code:</p>
                 <pre class="b-code b-sample_code_js"><code class="js">$('.js-sample_5 .js-sample__button').click(function(){
-        $(this)
-            .closest('.js-sample')
-            .find('.js-sample__tape')
-            <b>.tape('windTo', 20);</b>
-    });
-    $('.js-sample_6 .js-sample__button').click(function(){
-        $(this)
-            .closest('.js-sample')
-            .find('.js-sample__tape')
-            <b>.tape('stepInTo', 20);</b>
-    });</code></pre>
+    $(this)
+        .closest('.js-sample')
+        .find('.js-sample__tape')
+        <b>.tape('windTo', 20);</b>
+});
+$('.js-sample_6 .js-sample__button').click(function(){
+    $(this)
+        .closest('.js-sample')
+        .find('.js-sample__tape')
+        <b>.tape('stepInTo', 20);</b>
+});</code></pre>
                 <p class="section__content">
                     The second method can be used for smooth transitions between
                     the states. Speed regulated by the changeDuration option.
@@ -183,6 +145,55 @@
             <div class="g-clear"></div>
         </section>
 
+        <section class="section" id="gradually">
+            <header class="section__header">
+                <h1 class="section__title">Feature "gradually"</h1>
+            </header>
+            <div class="section__code">
+                <p class="section__content">HTML code:</p>
+                <pre class="b-code b-sample_code_html"><code class="html">&lt;div class="b-tape js-sample__tape"
+                    data-frame-count="32"
+                    data-frame-change-duration="200"
+                    data-gradually="<b>false</b>"&gt;&lt;/div&gt;</code></pre>
+                <p class="section__content">and</p>
+                <pre class="b-code b-sample_code_html"><code class="html">&lt;div class="b-tape js-sample__tape"
+                    data-frame-count="32"
+                    data-frame-change-duration="200"
+                    data-gradually="<b>true</b>"&gt;&lt;/div&gt;</code></pre>
+                <p class="section__content">JS code (tape usage):</p>
+                <pre class="b-code b-sample_code_js"><code class="js">$('.js-sample_1 .js-sample__button,
+                    .js-sample_2 .js-sample__button').click(function(){
+                    $(this)
+                    .closest('.js-sample')
+                    .find('.js-sample__tape')
+                    <b>.tape('stepInTo', 4);</b>
+                    });</code></pre>
+            </div>
+            <div class="section__sample">
+                <div class="tape-wrapper js-sample js-sample_1">
+                    <div class="tape tape_bonpari js-sample__tape"
+                         data-frame-count="5"
+                         data-frame-change-duration="200"
+                         data-gradually="false"></div>
+                    <div class="tape-wrapper__mask"></div>
+                    <div class="tape-wrapper__run">
+                        <button class="tape-wraper__run-button js-sample__button">Run in discrete mode!</button>
+                    </div>
+                </div>
+                <div class="tape-wrapper js-sample js-sample_2">
+                    <div class="tape tape_bonpari js-sample__tape"
+                         data-frame-count="5"
+                         data-frame-change-duration="200"
+                         data-gradually="true"></div>
+                    <div class="tape-wrapper__mask"></div>
+                    <div class="tape-wrapper__run">
+                        <button class="tape-wraper__run-button js-sample__button">Run with gradually!</button>
+                    </div>
+                </div>
+            </div>
+            <div class="g-clear"></div>
+        </section>
+
         <section class="section" id="wind-to-step-in-to">
             <header class="section__header">
                 <h1 class="section__title">Rotate behavior</h1>
@@ -190,13 +201,13 @@
             <div class="section__code">
                 <p class="section__content">JS code:</p>
                 <pre class="b-code b-sample_code_js"><code class="js">$('.js-sample_7 .js-sample__tape')
-        <b>.tape('rotate');</b>
-    $('.js-sample_7 .js-sample__tape')
-        .tape('rotate', <b>{
-            element: $('.js-sample_7 .js-sample__rotation-handler'),
-            direction: -1,
-            deltaX: 5
-        }</b>);</code></pre>
+    <b>.tape('rotate');</b>
+$('.js-sample_7 .js-sample__tape')
+    .tape('rotate', <b>{
+        element: $('.js-sample_7 .js-sample__rotation-handler'),
+        direction: -1,
+        deltaX: 5
+    }</b>);</code></pre>
                 <p class="section__content">
                     In this sample rotation rotation behavior apply to the tape and
                     to green helper (with options). deltaX option reduces the speed.
