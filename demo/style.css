@@ -36,7 +36,7 @@ strong {
  */
 
 .header {
-    margin: 0 -2em;
+    margin: 0 -2em 2em;
     background: rgb(255,0,178);
     background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmMDBiMiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMjMxMDAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
     background: -moz-linear-gradient(left,  rgba(255,0,178,1) 0%, rgba(226,49,0,1) 100%);
@@ -47,6 +47,7 @@ strong {
     background: linear-gradient(left,  rgba(255,0,178,1) 0%,rgba(226,49,0,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff00b2', endColorstr='#e23100',GradientType=1 );
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid #333;
 }
 .header__texture {
     height: 40px;
@@ -82,85 +83,115 @@ strong {
  * @subsection  Sample block
  */
 
-/*.b-sample {*/
-    /*margin: 30px;*/
-/*}*/
-/*.l-sample__description {*/
-    /*width: 40%;*/
-    /*float: left;*/
-/*}*/
-/*.l-sample__tape {*/
-    /*width: 50%;*/
-    /*float: right;*/
-/*}*/
-/*.b-sample__header {*/
-    /*font-size: 18px;*/
-    /*border-bottom: 1px dashed #eee;*/
-/*}*/
-/*.b-sample__text {*/
-    /*margin: 15px 0px 10px;*/
-    /*font-size: 14px;*/
-/*}*/
+.section {
+    margin: 1em 0;
+}
+.section__header {}
+.section__title {
+    display: inline-block;
+    padding: 0.1em 0.5em;
+    line-height: 1.2;
+    font-size: 22px;
+    font-family: Georgia;
+    background: #222;
+    color: white;
+    border: 1px solid black;
+    -webkit-border-radius: 0.3em;
+    -moz-border-radius: 0.3em;
+    -o-border-radius: 0.3em;
+    border-radius: 0.3em;
+}
+.section__content {
+    margin: 8px 0;
+    font-size: 13px;
+}
+.section__code {
+    width: 60%;
+    float: left;
+}
+.section__sample {
+    width: 40%;
+    float: right;
+}
 
 
 /**
  * @subsection  Code sample
  */
 
-/*.b-code {*/
-    /*margin: 5px -10px 15px;*/
-    /*padding:  10px;*/
-    /*line-height: 20px;*/
-    /*font-size: 14px;*/
-    /*font-family: monospace;*/
-/*}*/
-/*.b-sample_code_css {*/
-    /*background: #ffffea;*/
-/*}*/
-/*.b-sample_code_html {*/
-    /*background: #eaf0ff;*/
-/*}*/
-/*.b-sample_code_js {*/
-    /*background: #eafff0;*/
-/*}*/
+.b-code {
+    margin: 5px -10px 15px;
+    padding:  10px;
+    line-height: 20px;
+    font-size: 14px;
+    font-family: monospace;
+}
+.b-sample_code_css {
+    background: #ffffea;
+}
+.b-sample_code_html {
+    background: #eaf0ff;
+}
+.b-sample_code_js {
+    background: #eafff0;
+}
 
 
 /**
  * @subsection  Tape
  */
 
-/*.b-tape {}*/
-/*.b-tape_ipad {*/
-    /*width: 330px;*/
-    /*height: 220px;*/
-    /*margin-top: 10px;*/
-    /*background: url(ipad.png) 0px 0px no-repeat;*/
-/*}*/
-/*.b-tape_bonpari {*/
-    /*width: 350px;*/
-    /*height: 211px;*/
-    /*margin-top: 10px;*/
-    /*background: url(bonpari.jpg) 0px 0px no-repeat;*/
-/*}*/
-/*.l-tape {*/
-    /*float: left;*/
-    /*text-align: center;*/
-/*}*/
-/*.b-tape__run-button,*/
-/*.b-tape__label {*/
-    /*margin: 10px 0px;*/
-    /*font-size: 14px;*/
-/*}*/
-/*.b-sample__rotation-handler {*/
-    /*height: 30px;*/
-    /*margin: 10px 0px;*/
-    /*line-height: 30px;*/
-    /*text-align: center;*/
-    /*font-size: 12px;*/
-    /*-webkit-user-select: none;*/
-       /*-moz-user-select: none;*/
-            /*user-select: none;*/
-    /*background: #9b9;*/
-    /*cursor: pointer;*/
-/*}*/
+.tape {
+    position: absolute;
+    top: 9px;
+    left: 18px;
+    width: 320px;
+    height: 240px;
+    z-index: 1;
+}
+.tape_ipad {
+    background: url(ipad.png) 0px 0px no-repeat;
+}
+.tape_bonpari {
+    background: url(bonpari.jpg) 0px 0px no-repeat;
+}
+.tape-wrapper {
+    position: relative;
+    width: 320px;
+    height: 300px;
+    padding: 9px 18px 0 18px;
+    background: url(tape.png) 0 0 no-repeat;
+}
+.tape-wrapper__mask {
+    position: absolute;
+    top: 9px;
+    left: 18px;
+    width: 320px;
+    height: 240px;
+    background: url(tape.png) -18px -9px no-repeat;
+    z-index: 2;
+}
+.tape-wrapper__run {
+    text-align: center;
+    padding-top: 255px;
+}
+.tape-wraper__run-button {
+    font-size: 14px;
+}
+.tape__label {
+    font-size: 14px;
+    color: white;
+}
+.sample__rotation-handler {
+    height: 30px;
+    margin: 10px 0px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 12px;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+            user-select: none;
+    background: #9b9;
+    cursor: pointer;
+}
 
