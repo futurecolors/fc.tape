@@ -6,13 +6,9 @@
 
     <title>tape.js &mdash; rotate css-sprites like cinema tape!</title>
 
+    <link href='http://yandex.st/highlightjs/6.0/styles/default.min.css' rel='stylesheet'/>
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
-
-    <script type="text/javascript" src="http://yandex.st/jquery/1.6.4/jquery.min.js"></script>
-    <script type="text/javascript" src="http://yandex.st/jquery-ui/1.8.16/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="../jquery.fc.tape.js"></script>
-    <script type="text/javascript" src="script.js"></script>
 </head>
 <body>
     <header class="header">
@@ -27,21 +23,22 @@
     </header>
 
     <div class="wrapper">
-        <!--<section class="section">-->
-            <!--<h1 class="section__header">Main settings</h1>-->
-
-            <!--<div class="l-sample__description">-->
-                <!--<p class="section__content">CSS code:</p>-->
-                <!--<pre class="b-code b-sample_code_css"><code>.b-tape {-->
-        <!--width: 420px;-->
-        <!--height: 315px;-->
-        <!--background: url(tape.png) 0px 0px no-repeat;-->
-    <!--}</code></pre>-->
-                <!--<p class="section__content">JS code (tape activation):</p>-->
-                <!--<pre class="b-code b-sample_code_js"><code>$('.js-sample__tape').tape();</code></pre>-->
-            <!--</div>-->
-            <!--<div class="g-clear"></div>-->
-        <!--</section>-->
+        <section class="section">
+            <header class="section__header">
+                <h1 class="section__title">Common settings</h1>
+            </header>
+            <div class="l-sample__description">
+                <p class="section__content">CSS code:</p>
+                <pre class="b-code b-sample_code_css"><code class="css">.b-tape {
+        width: 420px;
+        height: 315px;
+        background: url(tape.png) 0px 0px no-repeat;
+    }</code></pre>
+                <p class="section__content">JS code (tape activation):</p>
+                <pre class="b-code b-sample_code_js"><code class="js">$('.js-sample__tape').tape();</code></pre>
+            </div>
+            <div class="g-clear"></div>
+        </section>
 
         <section class="section" id="gradually">
             <header class="section__header">
@@ -49,17 +46,17 @@
             </header>
             <div class="section__code">
                 <p class="section__content">HTML code:</p>
-                <pre class="b-code b-sample_code_html"><code>&lt;div class="b-tape js-sample__tape"
+                <pre class="b-code b-sample_code_html"><code class="html">&lt;div class="b-tape js-sample__tape"
          data-frame-count="32"
          data-frame-change-duration="200"
          data-gradually="<b>false</b>"&gt;&lt;/div&gt;</code></pre>
                 <p class="section__content">and</p>
-                <pre class="b-code b-sample_code_html"><code>&lt;div class="b-tape js-sample__tape"
+                <pre class="b-code b-sample_code_html"><code class="html">&lt;div class="b-tape js-sample__tape"
          data-frame-count="32"
          data-frame-change-duration="200"
          data-gradually="<b>true</b>"&gt;&lt;/div&gt;</code></pre>
                 <p class="section__content">JS code (tape usage):</p>
-                <pre class="b-code b-sample_code_js"><code>$('.js-sample_1 .js-sample__button,
+                <pre class="b-code b-sample_code_js"><code class="js">$('.js-sample_1 .js-sample__button,
        .js-sample_2 .js-sample__button').click(function(){
         $(this)
             .closest('.js-sample')
@@ -93,14 +90,16 @@
         </section>
 
         <section class="section" id="wind-to-next-prev">
-            <h1 class="section__header">Methods windToNext and windToPrev</h1>
+            <header class="section__header">
+                <h1 class="section__title">Methods windToNext and windToPrev</h1>
+            </header>
             <div class="section__code">
                 <p class="section__content">HTML code for this and follow samples:</p>
-                <pre class="b-code b-sample_code_html"><code>&lt;div class="b-tape js-sample__tape"
+                <pre class="b-code b-sample_code_html"><code class="html">&lt;div class="b-tape js-sample__tape"
          data-frame-count="32"
          data-frame-change-duration="80"&gt;&lt;/div&gt;</code></pre>
                 <p class="section__content">JS code:</p>
-                <pre class="b-code b-sample_code_js"><code>$('.js-sample_3 .js-sample__tape')
+                <pre class="b-code b-sample_code_js"><code class="js">$('.js-sample_3 .js-sample__tape')
         .bind('mouseenter mouseleave', function(){
             $(this)
                 <b>.tape('windToNext');</b>
@@ -135,14 +134,16 @@
         </section>
 
         <section class="section" id="wind-to-step-in-to">
-            <h1 class="section__header">Methods windTo and stepInTo</h1>
+            <header class="section__header">
+                <h1 class="section__title">Methods windTo and stepInTo</h1>
+            </header>
             <div class="section__code">
                 <p class="section__content">
                     Difference between windTo and stepInTo methods is that the first
                     method change frame without progressive transition.
                 </p>
                 <p class="section__content">JS code:</p>
-                <pre class="b-code b-sample_code_js"><code>$('.js-sample_5 .js-sample__button').click(function(){
+                <pre class="b-code b-sample_code_js"><code class="js">$('.js-sample_5 .js-sample__button').click(function(){
         $(this)
             .closest('.js-sample')
             .find('.js-sample__tape')
@@ -183,10 +184,12 @@
         </section>
 
         <section class="section" id="wind-to-step-in-to">
-            <h1 class="section__header">Rotate behavior</h1>
+            <header class="section__header">
+                <h1 class="section__title">Rotate behavior</h1>
+            </header>
             <div class="section__code">
                 <p class="section__content">JS code:</p>
-                <pre class="b-code b-sample_code_js"><code>$('.js-sample_7 .js-sample__tape')
+                <pre class="b-code b-sample_code_js"><code class="js">$('.js-sample_7 .js-sample__tape')
         <b>.tape('rotate');</b>
     $('.js-sample_7 .js-sample__tape')
         .tape('rotate', <b>{
@@ -217,5 +220,11 @@
             <div class="g-clear"></div>
         </section>
     </div>
+
+    <script type="text/javascript" src="http://yandex.st/jquery/1.6.4/jquery.min.js"></script>
+    <script type="text/javascript" src="http://yandex.st/jquery-ui/1.8.16/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="../jquery.fc.tape.js"></script>
+    <script src='http://yandex.st/highlightjs/6.0/highlight.min.js'></script>
+    <script type="text/javascript" src="script.js"></script>
 </body>
 </html>

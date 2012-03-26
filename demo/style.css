@@ -86,7 +86,9 @@ strong {
 .section {
     margin: 1em 0;
 }
-.section__header {}
+.section__header {
+    padding-bottom: 0.5em;
+}
 .section__title {
     display: inline-block;
     padding: 0.1em 0.5em;
@@ -106,7 +108,7 @@ strong {
     font-size: 13px;
 }
 .section__code {
-    width: 60%;
+    width: 50%;
     float: left;
 }
 .section__sample {
@@ -120,20 +122,16 @@ strong {
  */
 
 .b-code {
-    margin: 5px -10px 15px;
-    padding:  10px;
-    line-height: 20px;
-    font-size: 14px;
+    line-height: 16px;
+    font-size: 13px;
     font-family: monospace;
 }
-.b-sample_code_css {
-    background: #ffffea;
+pre code {
+    background: none;
+    padding: 0;
 }
-.b-sample_code_html {
-    background: #eaf0ff;
-}
-.b-sample_code_js {
-    background: #eafff0;
+pre .js .string {
+    color: #009a04;
 }
 
 
