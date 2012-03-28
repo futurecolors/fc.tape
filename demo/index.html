@@ -37,30 +37,31 @@
         </section>
 
         <section class="section">
-            <div class="section__important-description">
+            <p class="section__content">
                 <strong>fc.tape</strong> &mdash; jQuery widget for sprite animations.
-            </div>
-            <div class="section__important-description">
+            </p>
+            <p class="section__content">
+                Это из ридми)
                 Background image (sprite) consisting of picture frames
                 like the movie tape is animated. Widget supports options to adjust smothness and speed of animations
                 as well as methods to control animation behavior.
-            </div>
-        </section>
-
-        <section class="section">
-            <header class="section__header">
-                <h1 class="section__title">Common settings</h1>
-            </header>
-            <div class="l-sample__description">
-                <p class="section__content">CSS code:</p>
-                <pre class="code b-sample_code_css"><code class="css">.b-tape {
+            </з>
+            <p class="section__content">
+                Чтобы встроить анимацию на страницу, создайте блок,
+                зафиксируйте его размеры равными размерам одного кадра,
+                а в качестве фонового изображения укажите спрайт с кадрами:
+            </p>
+            <pre class="code code_narrow b-sample_code_html"><code class="html">&lt;div class="tape" /&gt;</code></pre><br />
+            <pre class="code code_narrow b-sample_code_css"><code class="css">.tape {
     width: 420px;
     height: 315px;
     background: url(tape.png) 0px 0px no-repeat;
 }</code></pre>
-                <p class="section__content">JS code (tape activation):</p>
-                <pre class="code b-sample_code_js"><code class="js">$('.js-sample__tape').tape();</code></pre>
-            </div>
+            <p class="section__content">
+                Активируйте fc.tape. Параметры можно указать тут при инициализации в js или через data-атрибуты
+                (здесь далее параметры будут указываться именно таким образом).
+            </p>
+            <pre class="code code_narrow b-sample_code_js"><code class="js">$('.js-sample__tape').tape();</code></pre>
             <div class="g-clear"></div>
         </section>
 
@@ -69,17 +70,23 @@
                 <h1 class="section__title">Methods windToNext and windToPrev</h1>
             </header>
             <div class="section__code">
-                <p class="section__content">HTML code for this and follow samples:</p>
+                <p class="section__content">
+                    windToNext and windToPre &mdash; простейшие методы для манипуляции плёнкой, позволяют прокрутить её
+                    вперёд на кадр или назад на кадр соответственно. Вот более реальный пример HTML кода,
+                    в котором настраивается количество кадров и скорость переключения:
+                </p>
                 <pre class="code b-sample_code_html"><code class="html">&lt;div class="b-tape js-sample__tape"
      data-frame-count="32"
      data-frame-change-duration="80"&gt;&lt;/div&gt;</code></pre>
-                <p class="section__content">JS code:</p>
-                <pre class="code b-sample_code_js"><code class="js">$('.js-sample_3 .js-sample__tape')
+                <p class="section__content">
+                    В этом примере вызов методов происходит при mouseenter и mouseleave на плёнке:
+                </p>
+                <pre class="code b-sample_code_js"><code class="js">$('.js-sample__tape')
     .bind('mouseenter mouseleave', function(){
         $(this)
             <b>.tape('windToNext');</b>
     });
-$('.js-sample_4 .js-sample__tape')
+$('.js-sample__tape')
     .bind('mouseenter mouseleave', function(){
         $(this)
             <b>.tape('windToPrev');</b>
@@ -120,17 +127,17 @@ $('.js-sample_4 .js-sample__tape')
             </header>
             <div class="section__code">
                 <p class="section__content">
+                    Методы windTo and stepInTo более высокоуровневые, они служат для навигации к заданному кадру.
                     Difference between windTo and stepInTo methods is that the first
                     method change frame without progressive transition.
                 </p>
-                <p class="section__content">JS code:</p>
-                <pre class="code b-sample_code_js"><code class="js">$('.js-sample_5 .js-sample__button').click(function(){
+                <pre class="code b-sample_code_js"><code class="js">$('.js-sample__button').click(function(){
     $(this)
         .closest('.js-sample')
         .find('.js-sample__tape')
         <b>.tape('windTo', 20);</b>
 });
-$('.js-sample_6 .js-sample__button').click(function(){
+$('.js-sample__button').click(function(){
     $(this)
         .closest('.js-sample')
         .find('.js-sample__tape')
@@ -175,24 +182,26 @@ $('.js-sample_6 .js-sample__button').click(function(){
                 <h1 class="section__title">Feature "gradually"</h1>
             </header>
             <div class="section__code">
-                <p class="section__content">HTML code:</p>
+                <p class="section__content">
+                    Фича gradually позволяет добавить плавность анимации.
+                    Её следует применять в случае, когда количество кадров невелико
+                    (чтобы нивелировать резкость переходов между ними), а также для достижения необычных эффектов.
+                </p>
                 <pre class="code b-sample_code_html"><code class="html">&lt;div class="b-tape js-sample__tape"
-                    data-frame-count="32"
-                    data-frame-change-duration="200"
-                    data-gradually="<b>false</b>"&gt;&lt;/div&gt;</code></pre>
-                <p class="section__content">and</p>
-                <pre class="code b-sample_code_html"><code class="html">&lt;div class="b-tape js-sample__tape"
-                    data-frame-count="32"
-                    data-frame-change-duration="200"
-                    data-gradually="<b>true</b>"&gt;&lt;/div&gt;</code></pre>
+     data-frame-count="32"
+     data-frame-change-duration="200"
+     data-gradually="<b>false</b>"&gt;&lt;/div&gt;
+&lt;div class="b-tape js-sample__tape"
+     data-frame-count="32"
+     data-frame-change-duration="200"
+     data-gradually="<b>true</b>"&gt;&lt;/div&gt;</code></pre>
                 <p class="section__content">JS code (tape usage):</p>
-                <pre class="code b-sample_code_js"><code class="js">$('.js-sample_1 .js-sample__button,
-                    .js-sample_2 .js-sample__button').click(function(){
-                    $(this)
-                    .closest('.js-sample')
-                    .find('.js-sample__tape')
-                    <b>.tape('stepInTo', 4);</b>
-                    });</code></pre>
+                <pre class="code b-sample_code_js"><code class="js">$('.js-sample__button').click(function(){
+    $(this)
+        .closest('.js-sample')
+        .find('.js-sample__tape')
+        <b>.tape('stepInTo', 4);</b>
+});</code></pre>
             </div>
             <div class="section__sample">
                 <div class="tape-wrapper js-sample js-sample_1">
@@ -230,18 +239,22 @@ $('.js-sample_6 .js-sample__button').click(function(){
                 <h1 class="section__title">Rotate behavior</h1>
             </header>
             <div class="section__code">
-                <p class="section__content">JS code:</p>
-                <pre class="code b-sample_code_js"><code class="js">$('.js-sample_7 .js-sample__tape')
+                <p class="section__content">
+                    В коробку включено одно совсем высокоуровневое поведение, для которого применим fc.tape:
+                    вращение объекта, у которого есть изображения, снятые с разных сторон.
+                    Такая фича может использоваться, например, для показа товара в интернет-магазине.
+                </p>
+                <pre class="code b-sample_code_js"><code class="js">$('.js-sample__tape')
     <b>.tape('rotate');</b>
-$('.js-sample_7 .js-sample__tape')
+$('.js-sample__tape')
     .tape('rotate', <b>{
-        element: $('.js-sample_7 .js-sample__rotation-handler'),
+        element: $('.js-sample__rotation-handler'),
         direction: -1,
         deltaX: 5
     }</b>);</code></pre>
                 <p class="section__content">
                     In this sample rotation rotation behavior apply to the tape and
-                    to green helper (with options). deltaX option reduces the speed.
+                    to yellow helper (with options). deltaX option reduces the speed.
                 </p>
             </div>
             <div class="section__sample">
