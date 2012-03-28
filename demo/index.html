@@ -4,9 +4,9 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-    <title>tape.js &mdash; rotate css-sprites like cinema tape!</title>
+    <title>fc.tape &mdash; rotate css-sprites like cinema tape!</title>
 
-    <link href='http://yandex.st/highlightjs/6.0/styles/default.min.css' rel='stylesheet'/>
+    <link href='http://yandex.st/highlightjs/6.0/styles/github.min.css' rel='stylesheet'/>
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
 </head>
@@ -16,16 +16,29 @@
             <div class="wrapper">
                 <a class="header__logo" href="http://futurecolors.ru"></a>
                 <h1 class="header__title">
-                    <strong>tape.js</strong> &mdash; rotate css-sprites like cinema tape!
+                    <strong>fc.tape</strong> &mdash; rotate css-sprites like cinema tape!
                 </h1>
             </div>
         </div>
     </header>
 
     <div class="wrapper">
+        <section class="section section_right">
+            <span class="download">
+                <a class="download__version" href="">
+                    <span class="download__version-header">Development version</span>
+                    <span class="download__version-size">10 kb</span>
+                </a>
+                <a class="download__version" href="">
+                    <span class="download__version-header">Production version</span>
+                    <span class="download__version-size">? kb</span>
+                </a>
+            </span>
+        </section>
+
         <section class="section">
             <div class="section__important-description">
-                <strong>tape.js</strong> &mdash; jQuery widget for sprite animations.
+                <strong>fc.tape</strong> &mdash; jQuery widget for sprite animations.
             </div>
             <div class="section__important-description">
                 Background image (sprite) consisting of picture frames
@@ -40,13 +53,13 @@
             </header>
             <div class="l-sample__description">
                 <p class="section__content">CSS code:</p>
-                <pre class="b-code b-sample_code_css"><code class="css">.b-tape {
+                <pre class="code b-sample_code_css"><code class="css">.b-tape {
     width: 420px;
     height: 315px;
     background: url(tape.png) 0px 0px no-repeat;
 }</code></pre>
                 <p class="section__content">JS code (tape activation):</p>
-                <pre class="b-code b-sample_code_js"><code class="js">$('.js-sample__tape').tape();</code></pre>
+                <pre class="code b-sample_code_js"><code class="js">$('.js-sample__tape').tape();</code></pre>
             </div>
             <div class="g-clear"></div>
         </section>
@@ -57,11 +70,11 @@
             </header>
             <div class="section__code">
                 <p class="section__content">HTML code for this and follow samples:</p>
-                <pre class="b-code b-sample_code_html"><code class="html">&lt;div class="b-tape js-sample__tape"
+                <pre class="code b-sample_code_html"><code class="html">&lt;div class="b-tape js-sample__tape"
      data-frame-count="32"
      data-frame-change-duration="80"&gt;&lt;/div&gt;</code></pre>
                 <p class="section__content">JS code:</p>
-                <pre class="b-code b-sample_code_js"><code class="js">$('.js-sample_3 .js-sample__tape')
+                <pre class="code b-sample_code_js"><code class="js">$('.js-sample_3 .js-sample__tape')
     .bind('mouseenter mouseleave', function(){
         $(this)
             <b>.tape('windToNext');</b>
@@ -74,21 +87,27 @@ $('.js-sample_4 .js-sample__tape')
             </div>
             <div class="section__sample">
                 <div class="tape-wrapper js-sample js-sample_3">
-                    <div class="tape_ipad js-sample__tape"
-                         data-frame-count="32"
-                         data-frame-change-duration="80"></div>
-                    <div class="tape-wrapper__mask"></div>
-                    <div class="tape-wrapper__run">
-                        <div class="tape__label">Mouse it! windToNext</div>
+                    <div class="tape-wrapper__inner">
+                        <div class="tape-wrapper__content">
+                            <div class="tape tape_ipad js-sample__tape"
+                                 data-frame-count="32"
+                                 data-frame-change-duration="80"></div>
+                            <div class="tape-wrapper__run">
+                                <div class="tape__label">Mouse it! windToNext</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="tape-wrapper js-sample js-sample_4">
-                    <div class="tape_ipad js-sample__tape"
-                         data-frame-count="32"
-                         data-frame-change-duration="80"></div>
-                    <div class="tape-wrapper__mask"></div>
-                    <div class="tape-wrapper__run">
-                        <div class="tape__label">Mouse it! windToPrev</div>
+                    <div class="tape-wrapper__inner">
+                        <div class="tape-wrapper__content">
+                            <div class="tape tape_ipad js-sample__tape"
+                                 data-frame-count="32"
+                                 data-frame-change-duration="80"></div>
+                            <div class="tape-wrapper__run">
+                                <div class="tape__label">Mouse it! windToPrev</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -105,7 +124,7 @@ $('.js-sample_4 .js-sample__tape')
                     method change frame without progressive transition.
                 </p>
                 <p class="section__content">JS code:</p>
-                <pre class="b-code b-sample_code_js"><code class="js">$('.js-sample_5 .js-sample__button').click(function(){
+                <pre class="code b-sample_code_js"><code class="js">$('.js-sample_5 .js-sample__button').click(function(){
     $(this)
         .closest('.js-sample')
         .find('.js-sample__tape')
@@ -124,21 +143,27 @@ $('.js-sample_6 .js-sample__button').click(function(){
             </div>
             <div class="section__sample">
                 <div class="tape-wrapper js-sample js-sample_5">
-                    <div class="tape_ipad js-sample__tape"
-                         data-frame-count="32"
-                         data-frame-change-duration="80"></div>
-                    <div class="tape-wrapper__mask"></div>
-                    <div class="tape-wrapper__run">
-                        <button class="tape-wraper__run-button js-sample__button">Run windTo transition!</button>
+                    <div class="tape-wrapper__inner">
+                        <div class="tape-wrapper__content">
+                            <div class="tape tape_ipad js-sample__tape"
+                                 data-frame-count="32"
+                                 data-frame-change-duration="80"></div>
+                            <div class="tape-wrapper__run">
+                                <button class="tape-wraper__run-button js-sample__button">Run windTo transition!</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="tape-wrapper js-sample js-sample_6">
-                    <div class="tape_ipad js-sample__tape"
-                         data-frame-count="32"
-                         data-frame-change-duration="80"></div>
-                    <div class="tape-wrapper__mask"></div>
-                    <div class="tape-wrapper__run">
-                        <button class="tape-wraper__run-button js-sample__button">Run stepInTo transition!</button>
+                    <div class="tape-wrapper__inner">
+                        <div class="tape-wrapper__content">
+                            <div class="tape tape_ipad js-sample__tape"
+                                 data-frame-count="32"
+                                 data-frame-change-duration="80"></div>
+                            <div class="tape-wrapper__run">
+                                <button class="tape-wraper__run-button js-sample__button">Run stepInTo transition!</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -151,17 +176,17 @@ $('.js-sample_6 .js-sample__button').click(function(){
             </header>
             <div class="section__code">
                 <p class="section__content">HTML code:</p>
-                <pre class="b-code b-sample_code_html"><code class="html">&lt;div class="b-tape js-sample__tape"
+                <pre class="code b-sample_code_html"><code class="html">&lt;div class="b-tape js-sample__tape"
                     data-frame-count="32"
                     data-frame-change-duration="200"
                     data-gradually="<b>false</b>"&gt;&lt;/div&gt;</code></pre>
                 <p class="section__content">and</p>
-                <pre class="b-code b-sample_code_html"><code class="html">&lt;div class="b-tape js-sample__tape"
+                <pre class="code b-sample_code_html"><code class="html">&lt;div class="b-tape js-sample__tape"
                     data-frame-count="32"
                     data-frame-change-duration="200"
                     data-gradually="<b>true</b>"&gt;&lt;/div&gt;</code></pre>
                 <p class="section__content">JS code (tape usage):</p>
-                <pre class="b-code b-sample_code_js"><code class="js">$('.js-sample_1 .js-sample__button,
+                <pre class="code b-sample_code_js"><code class="js">$('.js-sample_1 .js-sample__button,
                     .js-sample_2 .js-sample__button').click(function(){
                     $(this)
                     .closest('.js-sample')
@@ -171,23 +196,29 @@ $('.js-sample_6 .js-sample__button').click(function(){
             </div>
             <div class="section__sample">
                 <div class="tape-wrapper js-sample js-sample_1">
-                    <div class="tape tape_bonpari js-sample__tape"
-                         data-frame-count="5"
-                         data-frame-change-duration="200"
-                         data-gradually="false"></div>
-                    <div class="tape-wrapper__mask"></div>
-                    <div class="tape-wrapper__run">
-                        <button class="tape-wraper__run-button js-sample__button">Run in discrete mode!</button>
+                    <div class="tape-wrapper__inner">
+                        <div class="tape-wrapper__content">
+                            <div class="tape tape_bonpari js-sample__tape"
+                                 data-frame-count="5"
+                                 data-frame-change-duration="200"
+                                 data-gradually="false"></div>
+                            <div class="tape-wrapper__run">
+                                <button class="tape-wraper__run-button js-sample__button">Run in discrete mode!</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="tape-wrapper js-sample js-sample_2">
-                    <div class="tape tape_bonpari js-sample__tape"
-                         data-frame-count="5"
-                         data-frame-change-duration="200"
-                         data-gradually="true"></div>
-                    <div class="tape-wrapper__mask"></div>
-                    <div class="tape-wrapper__run">
-                        <button class="tape-wraper__run-button js-sample__button">Run with gradually!</button>
+                    <div class="tape-wrapper__inner">
+                        <div class="tape-wrapper__content">
+                            <div class="tape tape_bonpari js-sample__tape"
+                                 data-frame-count="5"
+                                 data-frame-change-duration="200"
+                                 data-gradually="true"></div>
+                            <div class="tape-wrapper__run">
+                                <button class="tape-wraper__run-button js-sample__button">Run with gradually!</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -200,7 +231,7 @@ $('.js-sample_6 .js-sample__button').click(function(){
             </header>
             <div class="section__code">
                 <p class="section__content">JS code:</p>
-                <pre class="b-code b-sample_code_js"><code class="js">$('.js-sample_7 .js-sample__tape')
+                <pre class="code b-sample_code_js"><code class="js">$('.js-sample_7 .js-sample__tape')
     <b>.tape('rotate');</b>
 $('.js-sample_7 .js-sample__tape')
     .tape('rotate', <b>{
@@ -215,15 +246,18 @@ $('.js-sample_7 .js-sample__tape')
             </div>
             <div class="section__sample">
                 <div class="tape-wrapper js-sample js-sample_7">
-                    <div class="tape_ipad js-sample__tape"
-                         data-frame-count="32"
-                         data-frame-change-duration="80"></div>
-                    <div class="tape-wrapper__mask"></div>
-                    <div class="tape-wrapper__run">
-                        <div class="tape__label">Rotate it! Drag the image</div>
-                        <div class="sample__rotation-handler js-sample__rotation-handler"
-                             unselectable="on">
-                            ... or the bar
+                    <div class="tape-wrapper__inner">
+                        <div class="tape-wrapper__content">
+                            <div class="tape tape_ipad js-sample__tape"
+                                 data-frame-count="32"
+                                 data-frame-change-duration="80"></div>
+                            <div class="tape-wrapper__run">
+                                <div class="tape__label">Rotate it! Drag the image</div>
+                                <div class="sample__rotation-handler js-sample__rotation-handler"
+                                     unselectable="on">
+                                    ... or the bar
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
