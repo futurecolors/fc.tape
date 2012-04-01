@@ -1,3 +1,5 @@
+hljs.initHighlightingOnLoad();
+
 $(function(){
     $('.js-sample__tape').tape({preload: false});
 
