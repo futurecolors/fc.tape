@@ -132,7 +132,7 @@ strong {
     line-height: 1.4;
     font-size: 12px;
     font-family: monospace;
-    border: 1px solid #bbb;
+    border: 1px solid rgba(0, 0, 0, 0.1);
     -webkit-border-radius: 0.7em;
     -moz-border-radius: 0.7em;
     -o-border-radius: 0.7em;
@@ -147,6 +147,9 @@ strong {
 }
 .code b {
     font-weight: bolder;
+}
+pre code {
+    background: rgba(100, 100, 100, 0.02);
 }
 
 
