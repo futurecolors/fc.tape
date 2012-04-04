@@ -116,6 +116,9 @@ a:active{
     -o-border-radius: 0.3em;
     border-radius: 0.3em;
 }
+.section__title-mark {
+    color: rgb(226,49,0);
+}
 .section__content {
     max-width: 1000px;
     margin: 1em 0;
