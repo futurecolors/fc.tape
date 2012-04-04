@@ -47,7 +47,10 @@
                 Background image (sprite) consisting of picture frames
                 like the movie tape is animated. Widget supports options to adjust smothness and speed of animations
                 as well as methods to control animation behavior.
+                Создать спрайт можно, объеденив набор кадров консольной утилитой <strong>convert,</strong>
+                входящей в пакет <a href="http://www.imagemagick.org">ImageMagick</a>:
             </p>
+            <pre class="code code_narrow b-sample_code_css"><code class="bash">$ convert img_* -append sprite.png</code></pre>
             <p class="section__content">
                 Чтобы встроить анимацию на страницу, создайте блок,
                 зафиксируйте его размеры равными размерам одного кадра,
