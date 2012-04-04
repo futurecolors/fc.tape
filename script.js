@@ -10,24 +10,30 @@ $(function(){
             .tape('setPosition', 0) // For loop play
             .tape('stepInTo', 4);
     });
-    $('.js-sample_3 .js-sample__tape').bind('mouseenter mouseleave', function(){
+    $('.js-sample__button.js-sample_3').bind('click', function(){
         $(this)
+            .closest('.js-sample')
+            .find('.js-sample__tape')
             .tape('windToNext');
     });
-    $('.js-sample_4 .js-sample__tape').bind('mouseenter mouseleave', function(){
+    $('.js-sample__button.js-sample_4').bind('click', function(){
         $(this)
+            .closest('.js-sample')
+            .find('.js-sample__tape')
             .tape('windToPrev');
     });
     $('.js-sample_5 .js-sample__button').click(function(){
         $(this)
             .closest('.js-sample')
             .find('.js-sample__tape')
+            .tape('setPosition', 0)
             .tape('windTo', 20);
     });
     $('.js-sample_6 .js-sample__button').click(function(){
         $(this)
             .closest('.js-sample')
             .find('.js-sample__tape')
+            .tape('setPosition', 0)
             .tape('stepInTo', 20);
     });
     $('.js-sample_7 .js-sample__tape')
