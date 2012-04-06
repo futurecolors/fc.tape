@@ -1,6 +1,11 @@
 /**
  * Sprite animation widget
- * @version 0.1
+ * http://futurecolors.github.com/fc.tape/
+ *
+ * @version     0.1
+ * @author      Artem Golikov, Future Colors <art@futurecolors.ru>
+ *
+ * @requires    jQuery, jQuery UI (core and widget)
  */
 $.widget('fc.tape', {
     /**
