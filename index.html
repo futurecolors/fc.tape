@@ -36,25 +36,32 @@
 
         <section class="section">
             <p class="section__content">
-                <strong>fc.tape</strong> &mdash; jQuery widget for sprite animations.<br />
-                Для работы виджета требуются
+                <strong>fc.tape</strong> &mdash; jQuery widget for sprite animations.<br /><br />
+                For the widget to work you need:
                 <a href="http://jquery.com/">jQuery</a>,
-                <a href="http://jqueryui.com/">jQuery UI</a> (core и widget),
-                а также спрайт с кадрами анимации.
+                <a href="http://jqueryui.com/">jQuery UI</a> (Core and Widget),
+                and certainly a sprite with animation frames.
             </p>
             <p class="section__content">
-                Это из ридми)
                 Background image (sprite) consisting of picture frames
-                like the movie tape is animated. Widget supports options to adjust smothness and speed of animations
+                is animated like the tape in old-time movie projectors.
+                Widget supports options to adjust smoothness and animation speed
                 as well as methods to control animation behavior.
-                Создать спрайт можно, объеденив набор кадров консольной утилитой <strong>convert,</strong>
-                входящей в пакет <a href="http://www.imagemagick.org">ImageMagick</a>:
+                You can create such sprite using console util <strong>convert</strong>,
+                included in popular image editing tool <a href="http://www.imagemagick.org">ImageMagick</a>.
+                E.g. to join all images in a folder into a single sprite you can use this command:
             </p>
             <pre class="code code_narrow b-sample_code_css"><code class="bash">$ convert img_* -append sprite.png</code></pre>
+        </section>
+        <section class="section">
+            <header class="section__header">
+                <h1 class="section__title">
+                    Basic usage
+                </h1>
+            </header>
             <p class="section__content">
-                Чтобы встроить анимацию на страницу, создайте блок,
-                зафиксируйте его размеры равными размерам одного кадра,
-                а в качестве фонового изображения укажите спрайт с кадрами:
+                To embed the widget in your page you need to create a block element with fixed dimensions,
+                equal to your frame size, and background image of your sprite:
             </p>
             <pre class="code code_narrow b-sample_code_html"><code class="html">&lt;div class="tape" /&gt;</code></pre><br />
             <pre class="code code_narrow b-sample_code_css"><code class="css">.tape {
@@ -63,8 +70,8 @@
     background: url(tape.png) 0px 0px no-repeat;
 }</code></pre>
             <p class="section__content">
-                Активируйте fc.tape. Параметры можно указать тут при инициализации в js или через data-атрибуты
-                (здесь далее параметры будут указываться именно таким образом).
+                Now you need to activate fc.tape. Options can be provided both in javascript and in html
+                via data-attributes (we will use later method throughout the demo).
             </p>
             <pre class="code code_narrow b-sample_code_js"><code class="js">$('.js-sample__tape').tape();</code></pre>
             <div class="g-clear"></div>
