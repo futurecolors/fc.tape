@@ -293,6 +293,7 @@ pre code {
 
 .download {
     display: inline-block;
+    margin-right: 40px;
 }
 .download__header {
     display: block;
