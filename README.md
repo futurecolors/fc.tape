@@ -163,15 +163,15 @@ Wind to specific frame, skipping intermediate frames. If `smooth` is
 set to `true` this transitions takes `frameChangeDuration` milliseconds.
 
 ```js
-$('#tape').tape('windTo', 0.6, true);
+$('#tape').tape('windTo', 4);
+$('#tape').tape('windTo', '30%');
 ```
 
 Parameters:
 
-* position — target frame index (to which tape is animated).
-* isRelative — frame index type:
-    * true — position takes float values between 0 and 1 and corresponds to frame position in the tape, or
-    * false (default) — position is integer and correspons to frame number.
+* position — target frame index (to which tape is animated) or position as a percentage of the
+length of the tape (string).
+
 
 ### stepInTo
 
@@ -179,17 +179,15 @@ Animate the tape from the current frame to the target one, not skipping frames, 
 to what `WindTo` does. Each transition between frames takes `frameChangeDuration` milliseconds.
 
 ```js
-$('#tape').tape('stepInTo', 36, false, function(){
+$('#tape').tape('stepInTo', 36, function(){
     console.log('Animation is finished');
 });
 ```
 
 Parameters:
 
-* position — target frame index (to which tape is animated).
-* isRelative — frame index type:
-    * true — position takes float values between 0 and 1 and corresponds to frame position in the tape, or
-    * false (default) — position is integer and correspons to frame number.
+* position — target frame index (to which tape is animated) or position as a percentage of the
+length of the tape (string).
 * callback — callback, which is fired after reaching target frame. It's called after all animations
 within the bounds of this method are done.
 
