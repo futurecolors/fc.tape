@@ -9,8 +9,8 @@ as well as methods to control animation behavior.
 
 `fc.tape` has following dependencies:
 
-* [jQuery](http://jquery.com/) and
-* [jQuery UI](http://jqueryui.com/) (Core and Widget)
+* [jQuery](http://jquery.com/) (1.6+) and
+* [jQuery UI](http://jqueryui.com/) (1.8+, Core and Widget)
 
 
 ## Usage
