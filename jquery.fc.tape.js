@@ -221,20 +221,14 @@ $.widget('fc.tape', {
      * Set frame with no animation
      */
     setPosition: function(position){
+        var nextFrameBackgroundPosition;
+
         if (!this.isLoaded) {
             return;
         }
 
-        if (position < 0) {
-            this.position = 0;
-        } else {
-            if (position < this.options.frameCount) {
-                this.position = position;
-            } else {
-                this.position = this.options.frameCount;
-            }
-        }
-        var nextFrameBackgroundPosition = this.options.backgroundX + 'px -' + (this.position * this.options.frameHeight) + 'px';
+        this.position = this._calculatePosition(position);
+        nextFrameBackgroundPosition = this.options.backgroundX + 'px -' + (this.position * this.options.frameHeight) + 'px';
         this.element.css('backgroundPosition', nextFrameBackgroundPosition);
         this.element.css('backgroundImage', this.options.image);
     },

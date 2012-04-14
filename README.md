@@ -202,7 +202,8 @@ $('#tape').tape('setPosition', 14);
 
 Parameters:
 
-* position — target frame index.
+* position — target frame index (to which tape is animated) or position as a percentage of the
+length of the tape (string).
 
 ### setOptions
 
