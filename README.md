@@ -23,7 +23,7 @@ $('#element').tape(options);
 ## Options
 
 
-### gradually (boolean)
+### smooth (boolean)
 
 Switch frames with smooth transition (next frame overlays previous with a small
 transparent fade). Useful for animations with a small number of frames,
@@ -31,7 +31,7 @@ slow speed animations and for several effects.
 
 ```js
 $('#tape').tape({
-    gradually: false
+    smooth: false
 });
 ```
     
@@ -78,10 +78,10 @@ Default: same as DOM element height.
 
 ### frameChangeDuration (integer)
 
-Duration of transition between frames in milliseconds for `gradually` mode,
+Duration of transition between frames in milliseconds for `smooth` mode,
 for normal mode - number of milliseconds each frame is visible during animation.
 
-If `gradually` is set to `true`, you might experience slowdowns in animations
+If `smooth` is set to `true`, you might experience slowdowns in animations
 when calling widget methods more frequently than `frameChangeDuration` as transitions
 will take the same amount of time.
 
@@ -126,7 +126,7 @@ Options can be set up using corresponding `data-` attributes:
 
 **Option**          | **Data attribute**         |
 --------------------|----------------------------|
-gradually           | data-gradually             |
+smooth           | data-smooth             |
 image               | data-image                 |
 frameCount          | data-frame-count           |
 frameHeight         | data-frame-height          |
@@ -159,7 +159,7 @@ $('#tape').tape('windToPrev');
 
 ### windTo
 
-Wind to specific frame, skipping intermediate frames. If `gradually` is
+Wind to specific frame, skipping intermediate frames. If `smooth` is
 set to `true` this transitions takes `frameChangeDuration` milliseconds.
 
 ```js

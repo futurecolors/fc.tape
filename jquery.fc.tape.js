@@ -2,7 +2,7 @@
  * Sprite animation widget
  * http://futurecolors.github.com/fc.tape/
  *
- * @version     0.1
+ * @version     0.2
  * @author      Artem Golikov, Future Colors <art@futurecolors.ru>
  *
  * @requires    jQuery, jQuery UI (core and widget)
@@ -12,7 +12,7 @@ $.widget('fc.tape', {
      * Settings
      */
     options: {
-        gradually: null,
+        smooth: null,
         image: null,
         frameCount: null,
         frameHeight: null,
@@ -47,7 +47,7 @@ $.widget('fc.tape', {
     _init: function(){
         this._initOptionFromData('frameCount', 0, parseInt);
         this._initOptionFromData('frameChangeDuration', 50, parseInt);
-        this._initOptionFromData('gradually', true);
+        this._initOptionFromData('smooth', true);
         this._initOptionFromData('frameHeight', 0, parseInt);
         this._initOptionFromData('image', false);
         this._initOptionFromData('preload', true);
@@ -67,7 +67,7 @@ $.widget('fc.tape', {
             this.element.css('position', 'relative');
         }
 
-        if (this.options.gradually) {
+        if (this.options.smooth) {
             this.nextFrame = $(this.nextFrameHtml)
                 .css('backgroundImage', this.options.image)
                 .appendTo(this.element);
@@ -196,7 +196,7 @@ $.widget('fc.tape', {
                 return;
             }
         }
-        if (this.options.gradually) {
+        if (this.options.smooth) {
             for (; (targetPosition - this.position) * positionStep >= 0; this.position += positionStep) {
 
                 if (targetPosition == this.position && typeof callback == 'function') {
@@ -265,16 +265,16 @@ $.widget('fc.tape', {
         var clientX = 0;
         var isActive = false;
         var that = this;
-        var initialGradually = this.options.gradually;
+        var initialSmooth = this.options.smooth;
 
         options.element
             .bind('mousedown.rotate', function(){
             isActive = true;
-            that.options.gradually = false;
+            that.options.smooth = false;
         })
             .bind('mouseup.rotate mouseleave.rotate', function(){
                 isActive = false;
-                that.options.gradually = initialGradually;
+                that.options.smooth = initialSmooth;
             })
             .bind('mousemove.rotate', function(e){
                 if (isActive && that.isLoaded) {
@@ -324,7 +324,7 @@ $.widget('fc.tape', {
         }
 
         var nextFrameBackgroundPosition = this.options.backgroundX + 'px -' + (this.position * this.options.frameHeight) + 'px';
-        if (this.options.gradually) {
+        if (this.options.smooth) {
             var $element = this.element;
             var $nextFrame = this.nextFrame;
             var duration = this.options.frameChangeDuration;
