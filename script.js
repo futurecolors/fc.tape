@@ -26,7 +26,6 @@ $(function(){
 
     var sample5Position = 0;
     $('.js-sample_5 .js-sample__button').click(function(){
-        console.log(sample5Position ? 0 : 20);
         $(this)
             .closest('.js-sample')
             .find('.js-sample__tape')
