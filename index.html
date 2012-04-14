@@ -24,10 +24,10 @@
     <div class="wrapper">
         <section class="section section_right">
             <span class="download">
-                <a class="download__version" href="https://raw.github.com/futurecolors/fc.tape/master/tags/jquery.fc.tape-0.1.js">
+                <a class="download__version" href="https://raw.github.com/futurecolors/fc.tape/master/jquery.fc.tape.js">
                     <div class="download__version-wrapper">
-                        <span class="download__version-header">Download v0.1</span>
-                        <span class="download__version-size">10 kb</span>
+                        <span class="download__version-header">Download v0.2</span>
+                        <span class="download__version-size">? kb</span>
                     </div>
                 </a>
             </span>
@@ -180,9 +180,9 @@
             <div class="g-clear"></div>
         </section>
 
-        <section class="section" id="gradually">
+        <section class="section" id="smooth">
             <header class="section__header">
-                <h1 class="section__title">"gradually" option</h1>
+                <h1 class="section__title">"smooth" option</h1>
             </header>
             <div class="section__code">
                 <p class="section__content">
@@ -192,11 +192,11 @@
                 <pre class="code b-sample_code_html"><code class="html">&lt;div class="b-tape js-sample__tape"
      data-frame-count="32"
      data-frame-change-duration="200"
-     data-gradually="<b>false</b>"&gt;&lt;/div&gt;
+     data-smooth="<b>false</b>"&gt;&lt;/div&gt;
 &lt;div class="b-tape js-sample__tape"
      data-frame-count="32"
      data-frame-change-duration="200"
-     data-gradually="<b>true</b>"&gt;&lt;/div&gt;</code></pre>
+     data-smooth="<b>true</b>"&gt;&lt;/div&gt;</code></pre>
                 <p class="section__content">JS code (tape usage):</p>
                 <pre class="code b-sample_code_js"><code class="js">$('.js-sample__button').click(function(){
     $(this)
@@ -212,7 +212,7 @@
                             <div class="tape tape_bonpari js-sample__tape"
                                  data-frame-count="5"
                                  data-frame-change-duration="200"
-                                 data-gradually="false"></div>
+                                 data-smooth="false"></div>
                             <div class="tape-wrapper__run">
                                 <button class="tape-wraper__run-button js-sample__button">Run in discrete mode!</button>
                             </div>
@@ -225,9 +225,9 @@
                             <div class="tape tape_bonpari js-sample__tape"
                                  data-frame-count="5"
                                  data-frame-change-duration="200"
-                                 data-gradually="true"></div>
+                                 data-smooth="true"></div>
                             <div class="tape-wrapper__run">
-                                <button class="tape-wraper__run-button js-sample__button">Run gradually!</button>
+                                <button class="tape-wraper__run-button js-sample__button">Run smooth!</button>
                             </div>
                         </div>
                     </div>
