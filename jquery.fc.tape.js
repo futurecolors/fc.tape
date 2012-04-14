@@ -164,12 +164,9 @@ $.widget('fc.tape', {
      * Skip animation frames and show specific frame instantly
      *
      * @param integer/float position Frame number
-     * @param boolean inRelative If isRelative is true, position is part of frames length (<1)
-     *
-     *
      */
-    windTo: function(position, isRelative) {
-        this.position = this._calculatePosition(position, isRelative);
+    windTo: function(position) {
+        this.position = this._calculatePosition(position);
         this._changeFrame();
     },
 
@@ -177,12 +174,10 @@ $.widget('fc.tape', {
      * Animate sprite to specific frame
      *
      * @param integer/float position Frame number
-     * @param boolean inRelative If isRelative is true, position is part of frames length (<1)
      * @param function callback
-     *
      */
-    stepInTo: function(position, isRelative, callback) {
-        var targetPosition = this._calculatePosition(position, isRelative);
+    stepInTo: function(position, callback) {
+        var targetPosition = this._calculatePosition(position);
         var positionStep;
         if (targetPosition > this.position) {
             positionStep = 1;
@@ -302,15 +297,37 @@ $.widget('fc.tape', {
      * Get int framenumber
      *
      * @param integer/float position Frame number
-     * @param boolean inRelative If isRelative is true, position is part of frames length (<1)
      * @return integer
      */
-    _calculatePosition: function(position, isRelative) {
-        if (isRelative) {
-            return Math.floor(this.options.frameCount * position)
-        } else {
-            return (position >= this.options.frameCount) ? 0 : position;
+    _calculatePosition: function(position) {
+        var type = $.type(position),
+            putInBorders = function(value, bottom, top){
+                if (value > top) {
+                    return top;
+                } else {
+                    return (value < bottom) ?  bottom : value;
+                }
+            },
+            percentMatch,
+            integerValue;
+
+
+        switch (type) {
+            case 'number':
+                integerValue = position;
+                break;
+            case 'string':
+                percentMatch = /(\d+)%/.exec(position);
+                if (!percentMatch) {
+                    throw 'Value ' + position + ' must be in "x%" format';
+                }
+                integerValue = Math.floor(this.options.frameCount * parseInt(percentMatch[1]) / 100);
+                break;
+            default:
+                throw 'Type of position in incorrect (' + type + ')';
         }
+
+        return putInBorders(integerValue, 0, this.options.frameCount - 1);
     },
 
     /**
