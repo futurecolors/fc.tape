@@ -126,7 +126,7 @@ Options can be set up using corresponding `data-` attributes:
 
 **Option**          | **Data attribute**         |
 --------------------|----------------------------|
-smooth           | data-smooth             |
+smooth              | data-smooth                |
 image               | data-image                 |
 frameCount          | data-frame-count           |
 frameHeight         | data-frame-height          |
