@@ -18,7 +18,8 @@ $.widget('fc.tape', {
         frameHeight: null,
         frameChangeDuration: null,
         backgroundX: 0,
-        preload: true
+        preload: true,
+        loop: true
     },
 
     /**
@@ -51,6 +52,7 @@ $.widget('fc.tape', {
         this._initOptionFromData('frameHeight', 0, parseInt);
         this._initOptionFromData('image', false);
         this._initOptionFromData('preload', true);
+        this._initOptionFromData('loop', true);
 
         this._preload();
         if (!this.options.image) {
@@ -144,7 +146,11 @@ $.widget('fc.tape', {
     windToNext: function(){
         this.position++;
         if (this.position >= this.options.frameCount) {
-            this.position = 0;
+            if (this.options.loop) {
+                this.position = 0;
+            } else {
+                this.position = this.options.frameCount - 1;
+            }
         }
         this._changeFrame();
     },
@@ -155,7 +161,11 @@ $.widget('fc.tape', {
     windToPrev: function(){
         this.position--;
         if (this.position < 0) {
-            this.position = this.options.frameCount - 1;
+            if (this.options.loop) {
+                this.position = this.options.frameCount - 1;
+            } else {
+                this.position = 0;
+            }
         }
         this._changeFrame();
     },
@@ -258,9 +268,9 @@ $.widget('fc.tape', {
 
         options.element
             .bind('mousedown.rotate', function(){
-            isActive = true;
-            that.options.smooth = false;
-        })
+                isActive = true;
+                that.options.smooth = false;
+            })
             .bind('mouseup.rotate mouseleave.rotate', function(){
                 isActive = false;
                 that.options.smooth = initialSmooth;
