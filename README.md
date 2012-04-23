@@ -109,7 +109,7 @@ Default: `0`.
 
 ### preload (boolean)
 
-Background image with a psrite is preloaded and animation starts only after it
+Background image with a sprite is preloaded and animation starts only after it
 finished. After loading `tape-loaded` event is triggered on the element.
 
 ```js
@@ -119,6 +119,19 @@ $('#tape').tape({
 ```
     
 Default: `true`.
+
+### loop (boolean)
+
+Loop animation, when sprite goes out of its borders.
+
+```js
+$('#tape').tape({
+    loop: false
+});
+```
+
+Default: `true`.
+
 
 ## Options via data-attributes
 
@@ -132,6 +145,7 @@ frameCount          | data-frame-count           |
 frameHeight         | data-frame-height          |
 frameChangeDuration | data-frame-change-duration |
 preload             | data-preload               |
+loop                | data-loop                  |
 
 ```html
 <div id="b-tape" data-frame-count="20" data-frame-height="150"></div>
@@ -143,7 +157,8 @@ preload             | data-preload               |
 
 ### windToNext
 
-Wind sprite to the next frame. If current frame is the last one, the first fame is displayed.
+Wind sprite to the next frame. If current frame is the last one and `loop` option is `true`,
+the first fame is displayed.
 
 ```js
 $('#tape').tape('windToNext');
@@ -151,7 +166,8 @@ $('#tape').tape('windToNext');
 
 ### windToPrev
 
-Wind sprite to the previous frame. If current frame is the first one, the last fame is displayed.
+Wind sprite to the previous frame. If current frame is the first one and `loop` option is `true`,
+the last fame is displayed.
 
 ```js
 $('#tape').tape('windToPrev');
