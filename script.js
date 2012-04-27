@@ -4,11 +4,17 @@ $(function(){
     $('.js-sample__tape').tape({preload: false});
 
     $('.js-sample_1 .js-sample__button, .js-sample_2 .js-sample__button').click(function(){
-        $(this)
+        var $button = $(this);
+        var $tape = $button
             .closest('.js-sample')
-            .find('.js-sample__tape')
+            .find('.js-sample__tape');
+
+        $button.prop('disabled', true);
+        $tape
             .tape('setPosition', 0) // For loop play
-            .tape('stepInTo', 4);
+            .tape('stepInTo', 4, function(){
+                $button.prop('disabled', false);
+            });
     });
 
     $('.js-sample__button.js-sample_3').bind('click', function(){
@@ -34,11 +40,18 @@ $(function(){
         sample5Position = sample5Position ? 0 : 20;
     });
     $('.js-sample_6 .js-sample__button').click(function(){
-        $(this)
+        var $button = $(this);
+        var $tape = $button
             .closest('.js-sample')
-            .find('.js-sample__tape')
+            .find('.js-sample__tape');
+
+
+        $button.prop('disabled', true);
+        $tape
             .tape('setPosition', 0)
-            .tape('stepInTo', 20);
+            .tape('stepInTo', 20, function(){
+                $button.prop('disabled', false);
+            });
     });
 
     $('.js-sample_7 .js-sample__tape')
