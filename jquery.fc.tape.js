@@ -43,6 +43,11 @@ $.widget('fc.tape', {
     isLoaded: false,
 
     /**
+     * Animation block
+     */
+    block: false,
+
+    /**
      * Widget initialization
      */
     _init: function(){
@@ -187,8 +192,15 @@ $.widget('fc.tape', {
      * @param function callback
      */
     stepInTo: function(position, callback) {
-        var targetPosition = this._calculatePosition(position);
-        var positionStep;
+        if (this.block) {
+            return;
+        }
+
+        var that = this,
+            targetPosition = this._calculatePosition(position),
+            positionStep,
+            timeout;
+
         if (targetPosition > this.position) {
             positionStep = 1;
         } else {
@@ -201,24 +213,29 @@ $.widget('fc.tape', {
                 return;
             }
         }
+
+        this.block = true;
         if (this.options.smooth) {
             for (; (targetPosition - this.position) * positionStep >= 0; this.position += positionStep) {
-
-                if (targetPosition == this.position && typeof callback == 'function') {
-                    // callback is triggered after last frame is reached
-                    this._changeFrame(callback);
+                if (targetPosition == this.position) {
+                    this._changeFrame(function(){
+                        that.block = false;
+                        // callback is triggered after last frame is reached
+                        if (typeof callback == 'function') {
+                            callback();
+                        }
+                    });
                 } else {
                     this._changeFrame();
                 }
             }
         } else {
-            var that = this;
-            var timeout;
             timeout = window.setInterval(function(){
                 that.position += positionStep;
                 that._changeFrame();
                 if (that.position * positionStep >= targetPosition * positionStep) {
                     clearTimeout(timeout);
+                    that.block = false;
                     if (typeof callback == 'function') {
                         callback();
                     }
@@ -268,9 +285,9 @@ $.widget('fc.tape', {
 
         options.element
             .bind('mousedown.rotate', function(){
-                isActive = true;
-                that.options.smooth = false;
-            })
+            isActive = true;
+            that.options.smooth = false;
+        })
             .bind('mouseup.rotate mouseleave.rotate', function(){
                 isActive = false;
                 that.options.smooth = initialSmooth;
