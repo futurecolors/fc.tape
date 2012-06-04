@@ -93,9 +93,22 @@ $('#tape').tape({
     
 Default: `50`.
 
-### backgroundX (integer)
+### spriteDirection (string)
 
-Background horizontal offset (by x axis). Useful when you have several
+This setting indicates the direction in which the sprite frames are glued: `'v'` for
+vertical (default) and `'h'` for horizontal.
+
+```js
+$('#tape').tape({
+    spriteDirection: 'h'
+});
+```
+
+Default: `0`.
+
+### backgroundX or backgroundY (integer)
+
+Background horizontal offset (by x axis or y axis). Useful when you have several
 sprites joined together in one background image. In this case animations start
 from the top frame and continue to bottom (offset specifies correct sprite).
 
@@ -144,6 +157,9 @@ image               | data-image                 |
 frameCount          | data-frame-count           |
 frameHeight         | data-frame-height          |
 frameChangeDuration | data-frame-change-duration |
+spriteDirection     | data-sprite-direction      |
+backgroundX         | data-background-x          |
+backgroundY         | data-background-y          |
 preload             | data-preload               |
 loop                | data-loop                  |
 
