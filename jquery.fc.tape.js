@@ -15,9 +15,9 @@ $.widget('fc.tape', {
         smooth: null,
         image: null,
         frameCount: null,
-        frameHeight: null,
+        frameSize: null,
         frameChangeDuration: null,
-        spriteDirection: 'v', // 'v' | 'h'
+        spriteDirection: null,
         backgroundX: 0,
         backgroundY: 0,
         preload: true,
@@ -59,7 +59,7 @@ $.widget('fc.tape', {
         this._initOptionFromData('backgroundX', 0, parseInt);
         this._initOptionFromData('backgroundY', 0, parseInt);
         this._initOptionFromData('smooth', true);
-        this._initOptionFromData('frameHeight', 0, parseInt);
+        this._initOptionFromData('frameSize', 0, parseInt);
         this._initOptionFromData('image', false);
         this._initOptionFromData('preload', true);
         this._initOptionFromData('loop', true);
@@ -84,8 +84,8 @@ $.widget('fc.tape', {
                 .appendTo(this.element);
         }
 
-        if (!this.options.frameHeight) {
-            this.options.frameHeight = this.element.height();
+        if (!this.options.frameSize) {
+            this.options.frameSize = this.options.spriteDirection == 'v' ? this.element.height() : this.element.width();
         }
     },
 
@@ -259,7 +259,7 @@ $.widget('fc.tape', {
         }
 
         this.position = this._calculatePosition(position);
-        nextFrameBackgroundPosition = this._getBackgroundPosition(this.position * this.options.frameHeight);
+        nextFrameBackgroundPosition = this._getBackgroundPosition(this.position * this.options.frameSize);
         this.element.css('backgroundPosition', nextFrameBackgroundPosition);
         this.element.css('backgroundImage', this.options.image);
     },
@@ -289,9 +289,9 @@ $.widget('fc.tape', {
 
         options.element
             .bind('mousedown.rotate', function(){
-            isActive = true;
-            that.options.smooth = false;
-        })
+                isActive = true;
+                that.options.smooth = false;
+            })
             .bind('mouseup.rotate mouseleave.rotate', function(){
                 isActive = false;
                 that.options.smooth = initialSmooth;
@@ -365,7 +365,7 @@ $.widget('fc.tape', {
             return;
         }
 
-        var nextFrameBackgroundPosition = this._getBackgroundPosition(this.position * this.options.frameHeight);
+        var nextFrameBackgroundPosition = this._getBackgroundPosition(this.position * this.options.frameSize);
         if (this.options.smooth) {
             var $element = this.element;
             var $nextFrame = this.nextFrame;

@@ -64,13 +64,14 @@ $('#tape').tape({
     
 Default: `0` (that is no animation by default).
 
-### frameHeight (integer)
+### frameSize (integer)
 
-Frame height in pixels. In other words, background image offset for the second frame.
+Frame size (height for vertical sprite and width for horizontal sprite) in pixels.
+In other words, background image offset for the second frame.
 
 ```js
 $('#tape').tape({
-    frameHeight: 250
+    frameSize: 250
 });
 ```
 
@@ -155,7 +156,7 @@ Options can be set up using corresponding `data-` attributes:
 smooth              | data-smooth                |
 image               | data-image                 |
 frameCount          | data-frame-count           |
-frameHeight         | data-frame-height          |
+frameSize           | data-frame-size            |
 frameChangeDuration | data-frame-change-duration |
 spriteDirection     | data-sprite-direction      |
 backgroundX         | data-background-x          |
@@ -257,7 +258,7 @@ Parameters:
 Get current settings value.
 
 ```js
-var height = $('#tape').tape('getOption', 'frameHeight');
+var height = $('#tape').tape('getOption', 'frameSize');
 ```
 
 Parameters:
@@ -293,3 +294,11 @@ tape element.
     * destroy — set to `true` when you need to disable rotation behavior.
     * direction — the directon of tape movement when the mouse cursor moves right:
 1 for down, -1 for up.
+
+
+# Changelog
+
+## v 0.3
+
+* `frameHeight` option renamed to `frameSize`;
+* Added `spriteDirection` and `backgroundY` options for horizontal sprites support.
