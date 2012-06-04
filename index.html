@@ -26,8 +26,8 @@
             <span class="download">
                 <a class="download__version" href="https://raw.github.com/futurecolors/fc.tape/master/jquery.fc.tape.js">
                     <div class="download__version-wrapper">
-                        <span class="download__version-header">Download v0.2</span>
-                        <span class="download__version-size">11 kb</span>
+                        <span class="download__version-header">Download v0.3</span>
+                        <span class="download__version-size">12 kb</span>
                     </div>
                 </a>
             </span>
@@ -50,7 +50,9 @@
                 included in popular image editing tool <a href="http://www.imagemagick.org">ImageMagick</a>.
                 E.g. to join all images in a folder into a single sprite you can use this command:
             </p>
-            <pre class="code code_narrow b-sample_code_css"><code class="bash">$ convert img_* -append sprite.png</code></pre>
+            <pre class="code code_narrow b-sample_code_css"><code class="bash">$ convert img_* -append sprite.png
+or
+$ convert img_* +append sprite.png</code></pre>
         </section>
         <section class="section">
             <header class="section__header">
@@ -188,15 +190,18 @@
                 <p class="section__content">
                     This option adds extra smoothness to your animation. Use it when tape has low number of frames
                     or you want to add unordinary effects.
+                    <i>Note that in this example, the sprite frames are glued horizontally.</i>
                 </p>
                 <pre class="code b-sample_code_html"><code class="html">&lt;div class="b-tape js-sample__tape"
      data-frame-count="32"
      data-frame-change-duration="200"
-     data-smooth="<b>false</b>"&gt;&lt;/div&gt;
+     <b>data-sprite-direction="h"</b>
+     <b>data-smooth="false"</b>&gt;&lt;/div&gt;
 &lt;div class="b-tape js-sample__tape"
      data-frame-count="32"
      data-frame-change-duration="200"
-     data-smooth="<b>true</b>"&gt;&lt;/div&gt;</code></pre>
+     <b>data-sprite-direction="h"</b>
+     <b>data-smooth="true"</b>&gt;&lt;/div&gt;</code></pre>
                 <p class="section__content">JS code (tape usage):</p>
                 <pre class="code b-sample_code_js"><code class="js">$('.js-sample__button').click(function(){
     $(this)
@@ -212,6 +217,7 @@
                             <div class="tape tape_bonpari js-sample__tape"
                                  data-frame-count="5"
                                  data-frame-change-duration="200"
+                                 data-sprite-direction="h"
                                  data-smooth="false"></div>
                             <div class="tape-wrapper__run">
                                 <button class="tape-wraper__run-button js-sample__button">Run in discrete mode!</button>
@@ -225,6 +231,7 @@
                             <div class="tape tape_bonpari js-sample__tape"
                                  data-frame-count="5"
                                  data-frame-change-duration="200"
+                                 data-sprite-direction="h"
                                  data-smooth="true"></div>
                             <div class="tape-wrapper__run">
                                 <button class="tape-wraper__run-button js-sample__button">Run smooth!</button>
@@ -285,7 +292,7 @@ $('.js-sample__tape')
 
     <script type="text/javascript" src="http://yandex.st/jquery/1.6.4/jquery.min.js"></script>
     <script type="text/javascript" src="http://yandex.st/jquery-ui/1.8.16/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="https://raw.github.com/futurecolors/fc.tape/0.2/jquery.fc.tape.js"></script>
+    <script type="text/javascript" src="https://raw.github.com/futurecolors/fc.tape/master/jquery.fc.tape.js"></script>
     <script src='http://yandex.st/highlightjs/6.0/highlight.min.js'></script>
     <script type="text/javascript" src="script.js"></script>
     <!-- Yandex.Metrika counter -->

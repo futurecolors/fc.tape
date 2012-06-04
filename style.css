@@ -38,6 +38,9 @@ a:hover{
 a:active{
     color: #f00089;
 }
+em, i {
+    font-style: italic;
+}
 
 
 /**
@@ -191,10 +194,10 @@ pre code {
     padding: 0 1em;
     font-size: 14px;
     color: black;
-    -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.4);
-    -moz-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.4);
-    -o-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.4);
-    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    -o-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
     border: 1px solid #7b7b7b;
     border-top: 1px solid #777;
     -webkit-border-radius: 4px;
@@ -230,10 +233,10 @@ pre code {
     background: -ms-linear-gradient(top,  #c9c9c9 0%,#eaeaea 99%);
     background: linear-gradient(top,  #c9c9c9 0%,#eaeaea 99%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c9c9c9', endColorstr='#eaeaea',GradientType=0 );
-    -webkit-box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.2);
-    -o-box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.2);
-    box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2);
+    -o-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2);
 }
 .tape__label {
     font-size: 14px;
@@ -241,7 +244,7 @@ pre code {
 }
 .sample__rotation-handler {
     height: 20px;
-    margin: 10px 0px;
+    margin: 10px 0;
     line-height: 20px;
     text-align: center;
     font-size: 12px;
@@ -272,12 +275,12 @@ pre code {
 .tape_ipad {
     width: 330px;
     height: 220px;
-    background: url(ipad.png) 0px 0px no-repeat;
+    background: url(ipad.png) 0 0 no-repeat;
 }
 .tape_bonpari {
     width: 350px;
     height: 211px;
-    background: url(bonpari.jpg) 0px 0px no-repeat;
+    background: url(bonpari.h.jpg) 0 0 no-repeat;
 }
 .tape_rotate {
     -webkit-user-select: none;
