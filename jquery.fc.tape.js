@@ -2,7 +2,7 @@
  * Sprite animation widget
  * http://futurecolors.github.com/fc.tape/
  *
- * @version     0.2
+ * @version     0.3
  * @author      Artem Golikov, Future Colors <art@futurecolors.ru>
  *
  * @requires    jQuery, jQuery UI (core and widget)
@@ -17,7 +17,9 @@ $.widget('fc.tape', {
         frameCount: null,
         frameHeight: null,
         frameChangeDuration: null,
+        spriteDirection: 'v', // 'v' | 'h'
         backgroundX: 0,
+        backgroundY: 0,
         preload: true,
         loop: true
     },
@@ -53,6 +55,9 @@ $.widget('fc.tape', {
     _init: function(){
         this._initOptionFromData('frameCount', 0, parseInt);
         this._initOptionFromData('frameChangeDuration', 50, parseInt);
+        this._initOptionFromData('spriteDirection', 'v');
+        this._initOptionFromData('backgroundX', 0, parseInt);
+        this._initOptionFromData('backgroundY', 0, parseInt);
         this._initOptionFromData('smooth', true);
         this._initOptionFromData('frameHeight', 0, parseInt);
         this._initOptionFromData('image', false);
@@ -66,8 +71,7 @@ $.widget('fc.tape', {
             this.options.image = 'url("' + this.options.image + '")';
         }
         if (this.element.css('backgroundImage') == 'none' && this.isLoaded) {
-            this.element.css('background', 'url(' + this.options.image + ') ' +
-                this.options.backgroundX + 'px 0px no-repeat');
+            this.element.css('background', 'url(' + this.options.image + ') ' + this._getBackgroundPosition(0) + ' no-repeat');
         }
 
         if (this.element.css('position') == 'static') {
@@ -100,7 +104,7 @@ $.widget('fc.tape', {
             var $preloader = $('<img src=' + imageSrc + ' />').load(function(){
                 that.isLoaded = true;
                 that.element
-                    .css('background', that.options.image + ' ' + that.options.backgroundX + 'px 0px no-repeat')
+                    .css('background', 'url(' + that.options.image + ') ' + this._getBackgroundPosition(0) + ' no-repeat')
                     .trigger('tape-loaded');
             });
 
@@ -255,7 +259,7 @@ $.widget('fc.tape', {
         }
 
         this.position = this._calculatePosition(position);
-        nextFrameBackgroundPosition = this.options.backgroundX + 'px -' + (this.position * this.options.frameHeight) + 'px';
+        nextFrameBackgroundPosition = this._getBackgroundPosition(this.position * this.options.frameHeight);
         this.element.css('backgroundPosition', nextFrameBackgroundPosition);
         this.element.css('backgroundImage', this.options.image);
     },
@@ -361,7 +365,7 @@ $.widget('fc.tape', {
             return;
         }
 
-        var nextFrameBackgroundPosition = this.options.backgroundX + 'px -' + (this.position * this.options.frameHeight) + 'px';
+        var nextFrameBackgroundPosition = this._getBackgroundPosition(this.position * this.options.frameHeight);
         if (this.options.smooth) {
             var $element = this.element;
             var $nextFrame = this.nextFrame;
@@ -383,6 +387,20 @@ $.widget('fc.tape', {
             if (typeof callback == 'function') {
                 callback();
             }
+        }
+    },
+
+    /**
+     * Get background position considering sprite orientation
+     *
+     * @param offset Sprite offset
+     * @private
+     */
+    _getBackgroundPosition: function(offset){
+        if (this.options.spriteDirection == 'v') {
+            return this.options.backgroundX + 'px ' + (-offset + 'px');
+        } else {
+            return (-offset + 'px ') + this.options.backgroundY + 'px';
         }
     }
 });
