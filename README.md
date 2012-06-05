@@ -302,3 +302,9 @@ tape element.
 
 * `frameHeight` option renamed to `frameSize`;
 * Added `spriteDirection` and `backgroundY` options for horizontal sprites support.
+
+## v 0.2
+
+* Added `loop` option for optional cyclic behavior;
+* For methods windTo, stepInTo and setPosition position is given in the formats 15 or '30%' (now there is no option isRelative);
+* `gradually` option renamed to `smooth`.
